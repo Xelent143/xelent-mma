@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Xelent MMA - Premium BJJ gear crafted in Sialkot, Pakistan since 2019.">
+    <title>About Us | Xelent MMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #DC2626;
+            --accent-dark: #991B1B;
+            --gold: #F59E0B;
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: #27272a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text {
+            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span { color: var(--accent); }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--accent); }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-icon:hover { color: var(--accent); }
+        
+        /* Hero Section */
+        .about-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(0,0,0,0.9)), 
+                        radial-gradient(circle at 30% 50%, rgba(220, 38, 38, 0.15), transparent 50%);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23DC2626' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .about-label {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+        
+        .about-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-title span { color: var(--accent); }
+        
+        .about-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+        }
+        
+        /* Story Section */
+        .story-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .story-image {
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            border-radius: 16px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            border: 1px solid var(--border);
+        }
+        
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-content h2 span { color: var(--accent); }
+        
+        .story-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 6rem 2rem;
+            background: var(--surface);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title span { color: var(--accent); }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+        }
+        
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+        }
+        
+        .value-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .value-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 6rem 2rem;
+        }
+        
+        .team-grid {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .team-card {
+            text-align: center;
+        }
+        
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 3px solid var(--border);
+        }
+        
+        .team-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-role {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Manufacturing Section */
+        .manufacturing-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), transparent);
+        }
+        
+        .manufacturing-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .manufacturing-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .manufacturing-content h2 span { color: var(--accent); }
+        
+        .manufacturing-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--surface);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        
+        .feature-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .feature-text p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover { color: var(--accent); }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .story-image {
+                height: 300px;
+                order: -1;
+            }
+            
+            .values-grid,
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            
+            .stats-grid,
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🥋</div>
+                <div class="logo-text">XELENT<span>MMA</span></div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#">BJJ Gi</a></li>
+                <li><a href="#">Rashguards</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icon"><i data-lucide="search" style="width: 22px; height: 22px;"></i></div>
+                <div class="nav-icon"><i data-lucide="user" style="width: 22px; height: 22px;"></i></div>
+                <a href="cart.html" class="nav-icon">
+                    <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <p class="about-label">Our Story</p>
+            <h1 class="about-title">BORN IN <span>SIALKOT</span></h1>
+            <p class="about-subtitle">Premium BJJ gear crafted by fighters, for fighters. From our factory in Pakistan to gyms worldwide.</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <p class="stat-number">50K+</p>
+                <p class="stat-label">Gis Sold</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-number">40+</p>
+                <p class="stat-label">Countries</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-number">250K+</p>
+                <p class="stat-label">Happy Customers</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-number">6</p>
+                <p class="stat-label">Years Strong</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-grid">
+            <div class="story-content">
+                <h2>OUR <span>MISSION</span></h2>
+                <p>Xelent MMA was founded in 2019 by a group of passionate MMA practitioners in Sialkot, Pakistan. Frustrated by the high cost of quality gear and the lack of durable options, we set out to create something better.</p>
+                <p>Our mission is simple: provide premium BJJ and MMA gear at accessible prices without compromising on quality. Every product we make is tested by our own team on the mats before it ever reaches you.</p>
+                <p>Today, we're proud to serve fighters across 40+ countries, from white belts taking their first class to black belts competing on the world stage.</p>
+            </div>
+            <div class="story-image">🏭</div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-header">
+            <h2 class="section-title">OUR <span>VALUES</span></h2>
+            <p class="section-subtitle">The principles that guide everything we do</p>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon"><i data-lucide="gem" style="width: 28px; height: 28px;"></i></div>
+                <h3>Quality First</h3>
+                <p>We use only premium materials and rigorous testing to ensure every product meets our high standards.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon"><i data-lucide="users" style="width: 28px; height: 28px;"></i></div>
+                <h3>Fighter Tested</h3>
+                <p>Every product is battle-tested by our team of active competitors and trainers.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon"><i data-lucide="map-pin" style="width: 28px; height: 28px;"></i></div>
+                <h3>Made in Pakistan</h3>
+                <p>Proudly manufactured in Sialkot, leveraging decades of textile craftsmanship expertise.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon"><i data-lucide="heart" style="width: 28px; height: 28px;"></i></div>
+                <h3>Community Driven</h3>
+                <p>We support local gyms, sponsor athletes, and give back to the martial arts community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="section-header">
+            <h2 class="section-title">MEET THE <span>TEAM</span></h2>
+            <p class="section-subtitle">The passionate people behind Xelent MMA</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">👤</div>
+                <h3>Ahmed Khan</h3>
+                <p class="team-role">Founder & CEO</p>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar">👤</div>
+                <h3>Sarah Ali</h3>
+                <p class="team-role">Head of Design</p>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar">👤</div>
+                <h3>Omar Hassan</h3>
+                <p class="team-role">Production Lead</p>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar">👤</div>
+                <h3>Zara Malik</h3>
+                <p class="team-role">Community Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Section -->
+    <section class="manufacturing-section">
+        <div class="manufacturing-content">
+            <h2>CRAFTED IN <span>SIALKOT</span></h2>
+            <p>Sialkot, Pakistan has been a global hub for sports manufacturing for over a century. We leverage this rich heritage of craftsmanship, combining traditional techniques with modern technology to create gear that stands the test of time.</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i data-lucide="scissors" style="width: 20px; height: 20px;"></i></div>
+                    <div class="feature-text">
+                        <h4>Precision Cutting</h4>
+                        <p>Laser-guided precision for perfect fit</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon"><i data-lucide="thread" style="width: 20px; height: 20px;"></i></div>
+                    <div class="feature-text">
+                        <h4>Reinforced Stitching</h4>
+                        <p>Triple-stitched stress points</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon"><i data-lucide="check-circle" style="width: 20px; height: 20px;"></i></div>
+                    <div class="feature-text">
+                        <h4>Quality Control</h4>
+                        <p>Every piece inspected before shipping</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🥋</div>
+                    <div class="logo-text">XELENT<span>MMA</span></div>
+                </a>
+                <p>Premium BJJ gear crafted in Sialkot, Pakistan.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">BJJ Gi</a></li>
+                    <li><a href="#">Rashguards</a></li>
+                    <li><a href="#">Shorts</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Xelent MMA. Made with ❤️ in Sialkot, Pakistan</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

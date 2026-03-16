@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure checkout - Xelent MMA. Complete your order for premium BJJ gear.">
+    <title>Checkout | Xelent MMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #DC2626;
+            --accent-dark: #991B1B;
+            --gold: #F59E0B;
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: #27272a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text {
+            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span { color: var(--accent); }
+        
+        /* Progress Steps */
+        .checkout-progress {
+            padding: 6rem 2rem 2rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .progress-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .progress-container::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--border);
+            z-index: 0;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .progress-step.active .step-number,
+        .progress-step.completed .step-number {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .step-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .progress-step.active .step-label {
+            color: var(--text-primary);
+        }
+        
+        /* Checkout Layout */
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+        }
+        
+        /* Form Sections */
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .form-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--background);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-row.three-col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        
+        /* Shipping Options */
+        .shipping-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .shipping-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .shipping-option:hover,
+        .shipping-option.selected {
+            border-color: var(--accent);
+        }
+        
+        .shipping-option input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent);
+        }
+        
+        .shipping-details {
+            flex: 1;
+        }
+        
+        .shipping-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .shipping-time {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .shipping-price {
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover,
+        .payment-method.selected {
+            border-color: var(--accent);
+        }
+        
+        .payment-method input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent);
+        }
+        
+        .payment-icon {
+            font-size: 1.5rem;
+        }
+        
+        .payment-name {
+            flex: 1;
+            font-weight: 600;
+        }
+        
+        /* Card Form */
+        .card-form {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 8px;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .summary-title {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .summary-items {
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .item-thumb {
+            width: 60px;
+            height: 60px;
+            background: var(--background);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .item-info {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .item-variant {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .item-price {
+            font-weight: 700;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .summary-row.total {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .complete-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        
+        .complete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+        
+        .secure-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        .footer p {
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-summary {
+                position: relative;
+                top: 0;
+            }
+            
+            .form-row,
+            .form-row.three-col {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .progress-container {
+                padding: 0 1rem;
+            }
+            
+            .step-label {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🥋</div>
+                <div class="logo-text">XELENT<span>MMA</span></div>
+            </a>
+            
+            <div style="color: var(--text-secondary); font-size: 0.9rem;">🔒 Secure Checkout</div>
+        </div>
+    </nav>
+
+    <!-- Progress -->
+    <div class="checkout-progress">
+        <div class="progress-container">
+            <div class="progress-step completed">
+                <div class="step-number">✓</div>
+                <span class="step-label">Information</span>
+            </div>
+            
+            <div class="progress-step completed">
+                <div class="step-number">✓</div>
+                <span class="step-label">Shipping</span>
+            </div>
+            
+            <div class="progress-step active">
+                <div class="step-number">3</div>
+                <span class="step-label">Payment</span>
+            </div>
+            
+            <div class="progress-step">
+                <div class="step-number">4</div>
+                <span class="step-label">Complete</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Container -->
+    <div class="checkout-container">
+        <!-- Left Column - Forms -->
+        <div class="checkout-form">
+            <!-- Contact Section -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-icon"><i data-lucide="user" style="width: 20px; height: 20px;"></i></div>
+                    <h2 class="section-title">Contact Information</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="john@example.com" value="john@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" placeholder="+92 321 234 5678">
+                </div>
+            </div>
+
+            <!-- Shipping Section -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-icon"><i data-lucide="truck" style="width: 20px; height: 20px;"></i></div>
+                    <h2 class="section-title">Shipping Address</h2>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" placeholder="John">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Doe">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" placeholder="123 Main Street">
+                </div>
+                
+                <div class="form-group">
+                    <label>Apartment, suite, etc. (optional)</label>
+                    <input type="text" placeholder="Apt 4B">
+                </div>
+                
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="Sialkot">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Province</label>
+                        <select>
+                            <option>Punjab</option>
+                            <option>Sindh</option>
+                            <option>KPK</option>
+                            <option>Balochistan</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Postal Code</label>
+                        <input type="text" placeholder="51310">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Country</label>
+                    <select>
+                        <option selected>Pakistan</option>
+                        <option>United States</option>
+                        <option>United Kingdom</option>
+                        <option>Canada</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Shipping Method -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-icon"><i data-lucide="package" style="width: 20px; height: 20px;"></i></div>
+                    <h2 class="section-title">Shipping Method</h2>
+                </div>
+                
+                <div class="shipping-options">
+                    <label class="shipping-option selected">
+                        <input type="radio" name="shipping" checked>
+                        <div class="shipping-details">
+                            <div class="shipping-name">Standard Shipping</div>
+                            <div class="shipping-time">5-7 business days</div>
+                        </div>
+                        <span class="shipping-price">FREE</span>
+                    </label>
+                    
+                    <label class="shipping-option">
+                        <input type="radio" name="shipping">
+                        <div class="shipping-details">
+                            <div class="shipping-name">Express Shipping</div>
+                            <div class="shipping-time">2-3 business days</div>
+                        </div>
+                        <span class="shipping-price">$15</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Payment Section -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-icon"><i data-lucide="credit-card" style="width: 20px; height: 20px;"></i></div>
+                    <h2 class="section-title">Payment</h2>
+                </div>
+                
+                <div class="payment-methods">
+                    <label class="payment-method selected">
+                        <input type="radio" name="payment" checked>
+                        <span class="payment-icon">💳</span>
+                        <span class="payment-name">Credit Card</span>
+                        <span>Visa, Mastercard</span>
+                    </label>
+                    
+                    <div class="card-form">
+                        <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="1234 5678 9012 3456">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Expiry Date</label>
+                                <input type="text" placeholder="MM/YY">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>CVC</label>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <label class="payment-method">
+                        <input type="radio" name="payment">
+                        <span class="payment-icon">📱</span>
+                        <span class="payment-name">JazzCash / EasyPaisa</span>
+                    </label>
+                    
+                    <label class="payment-method">
+                        <input type="radio" name="payment">
+                        <span class="payment-icon">🅿️</span>
+                        <span class="payment-name">PayPal</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Order Summary -->
+        <div class="order-summary">
+            <h2 class="summary-title">ORDER SUMMARY</h2>
+            
+            <div class="summary-items">
+                <div class="summary-item">
+                    <div class="item-thumb">🥋</div>
+                    <div class="item-info">
+                        <div class="item-name">Elite Pro Gi</div>
+                        <div class="item-variant">Black / A2</div>
+                    </div>
+                    <span class="item-price">$149</span>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="item-thumb">👕</div>
+                    <div class="item-info">
+                        <div class="item-name">Venom Rashguard</div>
+                        <div class="item-variant">Black / M</div>
+                    </div>
+                    <span class="item-price">$39</span>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="item-thumb">🩳</div>
+                    <div class="item-info">
+                        <div class="item-name">Flex Pro Shorts</div>
+                        <div class="item-variant">Black / M</div>
+                    </div>
+                    <span class="item-price">$45</span>
+                </div>
+            </div>
+            
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>$233</span>
+            </div>
+            
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span style="color: var(--gold);">FREE</span>
+            </div>
+            
+            <div class="summary-row">
+                <span>Taxes</span>
+                <span>$0</span>
+            </div>
+            
+            <div class="summary-row total">
+                <span>TOTAL</span>
+                <span>$233</span>
+            </div>
+            
+            <button class="complete-btn">COMPLETE ORDER</button>
+            
+            <div class="secure-note">
+                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+                <span>SSL Secure Checkout</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Xelent MMA. Made with ❤️ in Sialkot, Pakistan</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

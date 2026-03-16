@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elite Pro Gi - Premium BJJ Gi by Xelent MMA. Pearl weave cotton, reinforced stitching, competition approved.">
+    <title>Elite Pro Gi - Black | Xelent MMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #DC2626;
+            --accent-dark: #991B1B;
+            --gold: #F59E0B;
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: #27272a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text {
+            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-icon:hover {
+            color: var(--accent);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 6rem 2rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+        
+        /* Product Section */
+        .product-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        /* Image Gallery */
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .main-image {
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            border-radius: 16px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+        }
+        
+        .thumbnail-list {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--accent);
+        }
+        
+        /* Product Info */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .product-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+        
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        
+        .rating-text {
+            color: var(--text-secondary);
+        }
+        
+        .rating-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .product-price-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .price-current {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .price-original {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+        
+        .price-badge {
+            padding: 0.25rem 0.75rem;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
+        
+        /* Size Selector */
+        .size-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .section-label {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .section-label a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .size-btn {
+            min-width: 60px;
+            padding: 0.75rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .size-btn:hover,
+        .size-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        /* Color Selector */
+        .color-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .color-options {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .color-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .color-btn:hover,
+        .color-btn.active {
+            border-color: var(--text-primary);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        
+        .color-btn.black { background: #000; }
+        .color-btn.white { background: #fff; }
+        .color-btn.blue { background: #1e40af; }
+        .color-btn.navy { background: #1e3a5f; }
+        
+        /* Quantity */
+        .quantity-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            width: fit-content;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .qty-btn {
+            width: 40px;
+            height: 45px;
+            background: var(--surface);
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .qty-btn:hover {
+            background: var(--accent);
+        }
+        
+        .qty-input {
+            width: 60px;
+            height: 45px;
+            background: var(--background);
+            border: none;
+            color: var(--text-primary);
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        /* Actions */
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+        }
+        
+        .btn-add-cart {
+            flex: 1;
+            padding: 1.25rem 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-add-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+        
+        .btn-wishlist {
+            width: 60px;
+            height: 60px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-wishlist:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Features */
+        .product-features-mini {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: 12px;
+        }
+        
+        .feature-mini {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .feature-mini i {
+            color: var(--accent);
+        }
+        
+        /* Tabs */
+        .product-tabs {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .tab-header {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+        
+        .tab-btn {
+            padding: 1rem 0;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            color: var(--accent);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .tab-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .tab-content h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .tab-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Related Products */
+        .related-products {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+        
+        .section-title {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            font-size: 2rem;
+        }
+        
+        .section-title span {
+            color: var(--accent);
+        }
+        
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        
+        .product-image {
+            height: 280px;
+            background: linear-gradient(135deg, #1a1a1a, #252525);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .product-card-info {
+            padding: 1.5rem;
+        }
+        
+        .product-card-category {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-card-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-card-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .product-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-gallery {
+                position: relative;
+                top: 0;
+            }
+            
+            .main-image {
+                height: 400px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .product-title {
+                font-size: 1.75rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🥋</div>
+                <div class="logo-text">XELENT<span>MMA</span></div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="#">BJJ Gi</a></li>
+                <li><a href="#">Rashguards</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icon"><i data-lucide="search" style="width: 22px; height: 22px;"></i></div>
+                <div class="nav-icon"><i data-lucide="user" style="width: 22px; height: 22px;"></i></div>
+                <a href="cart.html" class="nav-icon">
+                    <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <a href="#">BJJ Gi</a> / Elite Pro Gi - Black
+    </div>
+
+    <!-- Product Section -->
+    <div class="product-section">
+        <!-- Image Gallery -->
+        <div class="product-gallery">
+            <div class="main-image">🥋</div>
+            <div class="thumbnail-list">
+                <div class="thumbnail active">🥋</div>
+                <div class="thumbnail">📸</div>
+                <div class="thumbnail">📸</div>
+                <div class="thumbnail">📸</div>
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <div class="product-header">
+                <div class="product-category">BJJ Gi</div>
+                <h1 class="product-title">Elite Pro Gi - Black</h1>
+                <div class="product-rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="rating-text"><strong>4.9</strong> (128 reviews) | <a href="#">Write a review</a></span>
+                </div>
+            </div>
+
+            <div class="product-price-section">
+                <span class="price-current">$149</span>
+                <span class="price-original">$189</span>
+                <span class="price-badge">Save 21%</span>
+            </div>
+
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Our flagship BJJ Gi features premium pearl weave fabric, reinforced stress points, 
+                and IBJJF-approved design. Designed for serious practitioners who demand the best.
+            </p>
+
+            <!-- Size Selector -->
+            <div class="size-section">
+                <label class="section-label">
+                    Size
+                    <a href="#">Size Guide</a>
+                </label>
+                <div class="size-options">
+                    <button class="size-btn">A0</button>
+                    <button class="size-btn">A1</button>
+                    <button class="size-btn active">A2</button>
+                    <button class="size-btn">A3</button>
+                    <button class="size-btn">A4</button>
+                    <button class="size-btn">A5</button>
+                </div>
+            </div>
+
+            <!-- Color Selector -->
+            <div class="color-section">
+                <label class="section-label">Color</label>
+                <div class="color-options">
+                    <button class="color-btn black active"></button>
+                    <button class="color-btn white"></button>
+                    <button class="color-btn blue"></button>
+                    <button class="color-btn navy"></button>
+                </div>
+            </div>
+
+            <!-- Quantity -->
+            <div class="quantity-section">
+                <label class="section-label">Quantity</label>
+                <div class="quantity-selector">
+                    <button class="qty-btn">-</button>
+                    <input type="number" class="qty-input" value="1" min="1">
+                    <button class="qty-btn">+</button>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="product-actions">
+                <button class="btn-add-cart">
+                    <i data-lucide="shopping-bag" style="width: 20px; height: 20px;"></i>
+                    Add to Cart
+                </button>
+                <button class="btn-wishlist">
+                    <i data-lucide="heart" style="width: 22px; height: 22px;"></i>
+                </button>
+            </div>
+
+            <!-- Features -->
+            <div class="product-features-mini">
+                <div class="feature-mini">
+                    <i data-lucide="truck" style="width: 18px; height: 18px;"></i>
+                    <span>Free Shipping over $100</span>
+                </div>
+                <div class="feature-mini">
+                    <i data-lucide="refresh-cw" style="width: 18px; height: 18px;"></i>
+                    <span>30-Day Returns</span>
+                </div>
+                <div class="feature-mini">
+                    <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
+                    <span>IBJJF Approved</span>
+                </div>
+                <div class="feature-mini">
+                    <i data-lucide="award" style="width: 18px; height: 18px;"></i>
+                    <span>1-Year Warranty</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Tabs -->
+    <div class="product-tabs">
+        <div class="tab-header">
+            <button class="tab-btn active">Description</button>
+            <button class="tab-btn">Specifications</button>
+            <button class="tab-btn">Reviews (128)</button>
+            <button class="tab-btn">Shipping</button>
+        </div>
+        
+        <div class="tab-content">
+            <h3>About the Elite Pro Gi</h3>
+            <p>
+                The Elite Pro Gi represents the pinnacle of our craftsmanship. Designed in collaboration 
+                with world-class athletes, this gi delivers uncompromising performance for training and competition.
+            </p>
+            
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>Premium Pearl Weave:</strong> 450gsm pearl weave fabric for optimal balance of durability and comfort</li>
+                <li><strong>Reinforced Stitching:</strong> Triple-stitched stress points for maximum durability</li>
+                <li><strong>IBJJF Approved:</strong> Meets all IBJJF competition standards</li>
+                <li><strong>Pre-Shrunk:</strong> Minimizes shrinkage after washing</li>
+                <li><strong>Anti-Microbial:</strong> Treated fabric resists odor and bacteria</li>
+                <li><strong>6-Point Loop System:</strong> Secure drawstring with reinforced loops</li>
+            </ul>
+            
+            <h3>Perfect For</h3>
+            <ul>
+                <li>Competition training</li>
+                <li>Daily practice and sparring</li>
+                <li>IBJJF tournaments</li>
+                <li>All belt levels</li>
+            </ul>
+            
+            <h3>Care Instructions</h3>
+            <p>
+                Machine wash cold with like colors. Hang dry recommended. Do not bleach. 
+                Wash gi after every use to maintain fabric integrity and hygiene.
+            </p>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <h2 class="section-title">YOU MAY ALSO <span>LIKE</span></h2>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">🥋</div>
+                <div class="product-card-info">
+                    <div class="product-card-category">BJJ Gi</div>
+                    <h3 class="product-card-name">Competition Lite Gi - White</h3>
+                    <div class="product-card-price">$129</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-card-info">
+                    <div class="product-card-category">Rashguard</div>
+                    <h3 class="product-card-name">Venom Compression Long Sleeve</h3>
+                    <div class="product-card-price">$39</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🩳</div>
+                <div class="product-card-info">
+                    <div class="product-card-category">Fight Shorts</div>
+                    <h3 class="product-card-name">Flex Pro Grappling Shorts</h3>
+                    <div class="product-card-price">$45</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🧤</div>
+                <div class="product-card-info">
+                    <div class="product-card-category">Accessories</div>
+                    <h3 class="product-card-name">Pro Hand Wraps (3-Pack)</h3>
+                    <div class="product-card-price">$19</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🥋</div>
+                    <div class="logo-text">XELENT<span>MMA</span></div>
+                </a>
+                <p>Premium BJJ gear crafted in Sialkot, Pakistan since 2019.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">BJJ Gi</a></li>
+                    <li><a href="#">Rashguards</a></li>
+                    <li><a href="#">Shorts</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Xelent MMA. Made with ❤️ in Sialkot, Pakistan</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

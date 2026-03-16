@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop premium BJJ Gi, Rashguards & MMA gear at Xelent MMA. Made in Sialkot, Pakistan.">
+    <title>Shop | Xelent MMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #DC2626;
+            --accent-dark: #991B1B;
+            --gold: #F59E0B;
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: #27272a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text {
+            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-icon:hover {
+            color: var(--accent);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 3rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+        
+        .page-title span {
+            color: var(--accent);
+        }
+        
+        .breadcrumb {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+        
+        /* Shop Layout */
+        .shop-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+        }
+        
+        /* Sidebar Filters */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .filter-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+        
+        .filter-option:hover {
+            color: var(--text-primary);
+        }
+        
+        .filter-option input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+        }
+        
+        .price-range {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .price-range input {
+            width: 100%;
+            padding: 0.5rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: white;
+        }
+        
+        /* Products Grid */
+        .products-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .results-count {
+            color: var(--text-secondary);
+        }
+        
+        .sort-select {
+            padding: 0.5rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--gold);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        
+        .product-badge-sale {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        
+        .product-image {
+            height: 260px;
+            background: linear-gradient(135deg, #1a1a1a, #252525);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+        
+        .quick-add {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .quick-add {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .product-info {
+            padding: 1.25rem;
+        }
+        
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+        
+        .rating-count {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .current-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .original-price {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+                display: none;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🥋</div>
+                <div class="logo-text">XELENT<span>MMA</span></div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="#">BJJ Gi</a></li>
+                <li><a href="#">Rashguards</a></li>
+                <li><a href="#">Shorts</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icon"><i data-lucide="search" style="width: 22px; height: 22px;"></i></div>
+                <div class="nav-icon"><i data-lucide="user" style="width: 22px; height: 22px;"></i></div>
+                <div class="nav-icon">
+                    <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+                    <span class="cart-count">3</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title">ALL <span>PRODUCTS</span></h1>
+        <p class="breadcrumb"><a href="index.html">Home</a> / <span>Shop</span></p>
+    </header>
+
+    <!-- Shop Container -->
+    <div class="shop-container">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3 class="filter-title">Categories</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" checked>
+                        <span>BJJ Gi (12)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Rashguards (8)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Fight Shorts (6)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Accessories (10)</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3 class="filter-title">Price Range</h3>
+                <div class="price-range">
+                    <input type="number" placeholder="Min" value="0">
+                    <span>-</span>
+                    <input type="number" placeholder="Max" value="200">
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3 class="filter-title">Size</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>A0 / XS</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>A1 / S</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" checked>
+                        <span>A2 / M</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>A3 / L</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>A4 / XL</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3 class="filter-title">Color</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Black</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>White</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Blue</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Navy</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Products Section -->
+        <div class="products-section">
+            <div class="toolbar">
+                <span class="results-count">Showing 1-12 of 36 products</span>
+                <select class="sort-select">
+                    <option>Sort by: Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Best Rated</option>
+                    <option>Newest</option>
+                </select>
+            </div>
+
+            <div class="products-grid">
+                <!-- Products 1-12 -->
+                <div class="product-card">
+                    <span class="product-badge">New</span>
+                    <div class="product-image">🥋</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">BJJ Gi</div>
+                        <h3 class="product-name">Elite Pro Gi - Black</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(128)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$149</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-badge-sale">-20%</span>
+                    <div class="product-image">👕</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Rashguard</div>
+                        <h3 class="product-name">Venom Compression Long Sleeve</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(89)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$39</span>
+                            <span class="original-price">$49</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🩳</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Fight Shorts</div>
+                        <h3 class="product-name">Flex Pro Grappling Shorts</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-badge">New</span>
+                    <div class="product-image">🥋</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">BJJ Gi</div>
+                        <h3 class="product-name">Competition Lite Gi - White</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(74)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$129</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👕</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Rashguard</div>
+                        <h3 class="product-name">Base Layer Short Sleeve</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(203)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$29</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-badge-sale">-15%</span>
+                    <div class="product-image">🩳</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Fight Shorts</div>
+                        <h3 class="product-name">MMA Hybrid Training Shorts</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(112)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$38</span>
+                            <span class="original-price">$45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🥋</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">BJJ Gi</div>
+                        <h3 class="product-name">Titan Heavyweight Gi - Navy</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(95)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$179</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-badge">New</span>
+                    <div class="product-image">🧤</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-name">Pro Hand Wraps (3-Pack)</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(267)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$19</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👕</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Rashguard</div>
+                        <h3 class="product-name">Combat Pro Long Sleeve</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(143)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$44</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-badge-sale">-25%</span>
+                    <div class="product-image">🥋</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">BJJ Gi</div>
+                        <h3 class="product-name">Starter Gi - Blue</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(312)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$74</span>
+                            <span class="original-price">$99</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🩳</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Fight Shorts</div>
+                        <h3 class="product-name">Vale Tudo Compression Shorts</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(78)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$35</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-badge">New</span>
+                    <div class="product-image">🧢</div>
+                    <button class="quick-add">Quick Add</button>
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-name">Xelent Snapback Cap</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(45)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$24</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-btn"><i data-lucide="chevron-left" style="width: 18px; height: 18px;"></i></a>
+                <a href="#" class="page-btn active">1</a>
+                <a href="#" class="page-btn">2</a>
+                <a href="#" class="page-btn">3</a>
+                <a href="#" class="page-btn"><i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🥋</div>
+                    <div class="logo-text">XELENT<span>MMA</span></div>
+                </a>
+                <p>Premium BJJ gear & fightwear crafted in Sialkot, Pakistan since 2019.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="instagram" style="width: 18px; height: 18px;"></i></a>
+                    <a href="#"><i data-lucide="facebook" style="width: 18px; height: 18px;"></i></a>
+                    <a href="#"><i data-lucide="youtube" style="width: 18px; height: 18px;"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">BJJ Gi</a></li>
+                    <li><a href="#">Rashguards</a></li>
+                    <li><a href="#">Shorts</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Xelent MMA. Made with ❤️ in Sialkot, Pakistan</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

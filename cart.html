@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your shopping cart - Xelent MMA. Premium BJJ gear and fightwear.">
+    <title>Shopping Cart | Xelent MMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #DC2626;
+            --accent-dark: #991B1B;
+            --gold: #F59E0B;
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: #27272a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text {
+            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span { color: var(--accent); }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover { color: var(--accent); }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-icon:hover { color: var(--accent); }
+        
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 2rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .page-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-title span { color: var(--accent); }
+        
+        .breadcrumb {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover { color: var(--accent); }
+        
+        /* Cart Layout */
+        .cart-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+        }
+        
+        /* Cart Items */
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            align-items: center;
+        }
+        
+        .item-image {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #1a1a1a, #252525);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .item-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .item-variant {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .qty-btn {
+            width: 32px;
+            height: 36px;
+            background: var(--background);
+            border: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .qty-btn:hover { background: var(--accent); }
+        
+        .qty-input {
+            width: 45px;
+            height: 36px;
+            background: var(--surface);
+            border: none;
+            color: var(--text-primary);
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .remove-btn {
+            color: var(--text-secondary);
+            background: none;
+            border: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.3s ease;
+        }
+        
+        .remove-btn:hover { color: var(--accent); }
+        
+        /* Order Summary */
+        .order-summary {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .summary-title {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .summary-row.discount {
+            color: var(--accent);
+        }
+        
+        .summary-row.total {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+        
+        .continue-shopping {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .continue-shopping:hover { color: var(--accent); }
+        
+        .secure-checkout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Promo Code */
+        .promo-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .promo-input-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .promo-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: white;
+        }
+        
+        .promo-btn {
+            padding: 0.75rem 1rem;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .promo-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Recommended Section */
+        .recommended-section {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+        
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+        }
+        
+        .section-title span { color: var(--accent); }
+        
+        .view-all {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .product-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a1a, #252525);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1rem;
+        }
+        
+        .product-name {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .product-price {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+        }
+        
+        .add-btn {
+            width: 100%;
+            padding: 0.6rem;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .add-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        /* Empty Cart State */
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .empty-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+        
+        .empty-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .empty-text {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .shop-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover { color: var(--accent); }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-summary {
+                position: relative;
+                top: 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+            }
+            
+            .item-image {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .item-actions {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🥋</div>
+                <div class="logo-text">XELENT<span>MMA</span></div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#">BJJ Gi</a></li>
+                <li><a href="#">Rashguards</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icon"><i data-lucide="search" style="width: 22px; height: 22px;"></i></div>
+                <div class="nav-icon"><i data-lucide="user" style="width: 22px; height: 22px;"></i></div>
+                <a href="cart.html" class="nav-icon">
+                    <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">SHOPPING <span>CART</span></h1>
+            <p class="breadcrumb"><a href="index.html">Home</a> / <span>Cart</span></p>
+        </div>
+    </header>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+        <!-- Cart Items -->
+        <div class="cart-items">
+            <!-- Item 1 -->
+            <div class="cart-item">
+                <div class="item-image">🥋</div>
+                <div class="item-details">
+                    <h3>Elite Pro Gi</h3>
+                    <p class="item-variant">Black / A2</p>
+                    <p class="item-price">$149</p>
+                </div>
+                <div class="item-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-btn">-</button>
+                        <input type="number" class="qty-input" value="1">
+                        <button class="qty-btn">+</button>
+                    </div>
+                    <button class="remove-btn">
+                        <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i> Remove
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="cart-item">
+                <div class="item-image">👕</div>
+                <div class="item-details">
+                    <h3>Venom Compression Rashguard</h3>
+                    <p class="item-variant">Black / M</p>
+                    <p class="item-price">$39</p>
+                </div>
+                <div class="item-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-btn">-</button>
+                        <input type="number" class="qty-input" value="1">
+                        <button class="qty-btn">+</button>
+                    </div>
+                    <button class="remove-btn">
+                        <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i> Remove
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="cart-item">
+                <div class="item-image">🩳</div>
+                <div class="item-details">
+                    <h3>Flex Pro Grappling Shorts</h3>
+                    <p class="item-variant">Black / M</p>
+                    <p class="item-price">$45</p>
+                </div>
+                <div class="item-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-btn">-</button>
+                        <input type="number" class="qty-input" value="1">
+                        <button class="qty-btn">+</button>
+                    </div>
+                    <button class="remove-btn">
+                        <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i> Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h2 class="summary-title">ORDER SUMMARY</h2>
+            
+            <div class="summary-row">
+                <span>Subtotal (3 items)</span>
+                <span>$233</span>
+            </div>
+            
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span style="color: var(--gold);">Free</span>
+            </div>
+            
+            <div class="summary-row">
+                <span>Taxes</span>
+                <span>Calculated at checkout</span>
+            </div>
+            
+            <div class="summary-row total">
+                <span>ESTIMATED TOTAL</span>
+                <span>$233</span>
+            </div>
+            
+            <!-- Promo Code -->
+            <div class="promo-section">
+                <div class="promo-input-group">
+                    <input type="text" class="promo-input" placeholder="Promo code">
+                    <button class="promo-btn">Apply</button>
+                </div>
+            </div>
+            
+            <a href="checkout.html" class="checkout-btn">PROCEED TO CHECKOUT</a>
+            
+            <a href="shop.html" class="continue-shopping">← Continue Shopping</a>
+            
+            <div class="secure-checkout">
+                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+                <span>Secure Checkout</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommended Section -->
+    <section class="recommended-section">
+        <div class="section-header">
+            <h2 class="section-title">YOU MIGHT ALSO <span>LIKE</span></h2>
+            <a href="shop.html" class="view-all">View All →</a>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">🧤</div>
+                <div class="product-info">
+                    <h3 class="product-name">Pro Hand Wraps</h3>
+                    <p class="product-price">$19</p>
+                    <button class="add-btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🧢</div>
+                <div class="product-info">
+                    <h3 class="product-name">Xelent Snapback</h3>
+                    <p class="product-price">$24</p>
+                    <button class="add-btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">🥋</div>
+                <div class="product-info">
+                    <h3 class="product-name">Gi Bag</h3>
+                    <p class="product-price">$35</p>
+                    <button class="add-btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <h3 class="product-name">Base Layer Tee</h3>
+                    <p class="product-price">$29</p>
+                    <button class="add-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🥋</div>
+                    <div class="logo-text">XELENT<span>MMA</span></div>
+                </a>
+                <p>Premium BJJ gear crafted in Sialkot, Pakistan.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">BJJ Gi</a></li>
+                    <li><a href="#">Rashguards</a></li>
+                    <li><a href="#">Shorts</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Xelent MMA. Made with ❤️ in Sialkot, Pakistan</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

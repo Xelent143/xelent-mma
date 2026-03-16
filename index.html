@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Xelent MMA - Premium BJJ Gi, Rashguards & MMA Gear. Made in Sialkot, Pakistan since 2019. Free worldwide shipping.">
+    <title>Xelent MMA | Premium BJJ Gear & Fightwear</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #DC2626;
+            --accent-dark: #991B1B;
+            --gold: #F59E0B;
+            --background: #0a0a0a;
+            --surface: #111111;
+            --surface-light: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: #27272a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text {
+            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-icon:hover {
+            color: var(--accent);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 .highlight {
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+        }
+        
+        .hero-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .product-showcase {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .product-main {
+            background: linear-gradient(145deg, var(--surface), var(--surface-light));
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+        
+        .product-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.2) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+        
+        .product-image-placeholder {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+        
+        .product-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        
+        .product-thumbs {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+        
+        .thumb {
+            width: 60px;
+            height: 60px;
+            background: var(--surface-light);
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .thumb:hover,
+        .thumb.active {
+            border-color: var(--accent);
+        }
+        
+        /* Categories */
+        .categories {
+            padding: 6rem 2rem;
+            background: var(--surface);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title span {
+            color: var(--accent);
+        }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .categories-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+        
+        .category-image {
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.8) 100%);
+        }
+        
+        .category-content {
+            padding: 2rem;
+        }
+        
+        .category-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .category-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .category-link:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Featured Products */
+        .featured {
+            padding: 6rem 2rem;
+        }
+        
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        
+        .product-badge-new {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--gold);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        
+        .product-badge-sale {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        
+        .product-image {
+            height: 280px;
+            background: linear-gradient(135deg, #1a1a1a, #252525);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+        
+        .quick-add {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .product-card:hover .quick-add {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .stars {
+            color: var(--gold);
+        }
+        
+        .rating-count {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .current-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .original-price {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+        
+        /* Features */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.75rem;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* About */
+        .about {
+            padding: 6rem 2rem;
+        }
+        
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-img-main {
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            border-radius: 20px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            border: 1px solid var(--border);
+        }
+        
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--accent);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .experience-badge .years {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .experience-badge .text {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content h2 span {
+            color: var(--accent);
+        }
+        
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .about-feature i {
+            color: var(--accent);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--surface);
+        }
+        
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+        
+        .testimonial-stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.15) 0%, transparent 60%);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .footer-bottom p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .payment-icon {
+            width: 40px;
+            height: 25px;
+            background: var(--background);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding-top: 6rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .reveal {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🥋</div>
+                <div class="logo-text">XELENT<span>MMA</span></div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#bjj-gi">BJJ Gi</a></li>
+                <li><a href="#rashguards">Rashguards</a></li>
+                <li><a href="#shorts">Shorts</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="nav-icon">
+                    <i data-lucide="search" style="width: 22px; height: 22px;"></i>
+                </div>
+                <div class="nav-icon">
+                    <i data-lucide="user" style="width: 22px; height: 22px;"></i>
+                </div>
+                <div class="nav-icon">
+                    <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+                    <span class="cart-count">3</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🔥</span> Premium BJJ Gear Since 2019
+                </div>
+                <h1>
+                    GEAR UP FOR<br>
+                    <span class="highlight">GREATNESS</span>
+                </h1>
+                <p class="hero-description">
+                    Professional BJJ Gi, Rashguards & Fightwear crafted in Sialkot, Pakistan. 
+                    Trusted by champions. Built for warriors. Free worldwide shipping on orders over $100.
+                </p>
+                <div class="hero-cta">
+                    <a href="#shop" class="btn-primary">
+                        <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
+                        Shop Now
+                    </a>
+                    <a href="#about" class="btn-secondary">
+                        Our Story
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">15K+</div>
+                        <div class="stat-label">Athletes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">50+</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">4.9</div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="product-showcase">
+                    <div class="product-glow"></div>
+                    <div class="product-main">
+                        <span class="product-tag">Bestseller</span>
+                        <div class="product-image-placeholder">🥋</div>
+                        <div class="product-thumbs">
+                            <div class="thumb active">⚫</div>
+                            <div class="thumb">🔵</div>
+                            <div class="thumb">⚪</div>
+                            <div class="thumb">🔴</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="shop">
+        <div class="section-header">
+            <span class="section-tag">Collections</span>
+            <h2 class="section-title">SHOP BY <span>CATEGORY</span></h2>
+            <p class="section-subtitle">Professional fightwear designed for training and competition</p>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-image">🥋</div>
+                <div class="category-content">
+                    <h3>BJJ GI</h3>
+                    <p>Premium pearl weave kimonos for Brazilian Jiu-Jitsu</p>
+                    <a href="#" class="category-link">
+                        Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-image">👕</div>
+                <div class="category-content">
+                    <h3>RASHGUARDS</h3>
+                    <p>Compression gear for no-gi training & MMA</p>
+                    <a href="#" class="category-link">
+                        Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-image">🩳</div>
+                <div class="category-content">
+                    <h3>FIGHT SHORTS</h3>
+                    <p>Flexible shorts for grappling & striking</p>
+                    <a href="#" class="category-link">
+                        Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="section-header">
+            <span class="section-tag">Trending</span>
+            <h2 class="section-title">FEATURED <span>PRODUCTS</span></h2>
+            <p class="section-subtitle">Our most popular gear chosen by champions</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card reveal">
+                <span class="product-badge-new">New</span>
+                <div class="product-image">🥋</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">BJJ Gi</div>
+                    <h3 class="product-name">Elite Pro Gi - Black</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(128)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$149</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card reveal">
+                <span class="product-badge-sale">-20%</span>
+                <div class="product-image">👕</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">Rashguard</div>
+                    <h3 class="product-name">Venom Compression Long Sleeve</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(89)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$39</span>
+                        <span class="original-price">$49</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card reveal">
+                <div class="product-image">🩳</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">Fight Shorts</div>
+                    <h3 class="product-name">Flex Pro Grappling Shorts</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(156)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$45</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card reveal">
+                <span class="product-badge-new">New</span>
+                <div class="product-image">🥋</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">BJJ Gi</div>
+                    <h3 class="product-name">Competition Lite Gi - White</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(74)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$129</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card reveal">
+                <div class="product-image">👕</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">Rashguard</div>
+                    <h3 class="product-name">Base Layer Short Sleeve</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(203)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$29</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card reveal">
+                <span class="product-badge-sale">-15%</span>
+                <div class="product-image">🩳</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">Fight Shorts</div>
+                    <h3 class="product-name">MMA Hybrid Training Shorts</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(112)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$38</span>
+                        <span class="original-price">$45</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card reveal">
+                <div class="product-image">🥋</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">BJJ Gi</div>
+                    <h3 class="product-name">Titan Heavyweight Gi - Navy</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(95)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$179</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card reveal">
+                <span class="product-badge-new">New</span>
+                <div class="product-image">🧤</div>
+                <button class="quick-add">Quick Add</button>
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <h3 class="product-name">Pro Hand Wraps (3-Pack)</h3>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(267)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">$19</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="section-header">
+            <span class="section-tag">Why Choose Us</span>
+            <h2 class="section-title">THE <span>XELENT</span> DIFFERENCE</h2>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-item reveal">
+                <div class="feature-icon">🇵🇰</div>
+                <h3>Made in Sialkot</h3>
+                <p>Crafted in Pakistan's manufacturing hub with decades of textile expertise</p>
+            </div>
+            
+            <div class="feature-item reveal">
+                <div class="feature-icon">💎</div>
+                <h3>Premium Materials</h3>
+                <p>Pearl weave cotton, 4-way stretch fabric, reinforced stitching</p>
+            </div>
+            
+            <div class="feature-item reveal">
+                <div class="feature-icon">🏆</div>
+                <h3>Athlete Tested</h3>
+                <p>Worn by champions in UFC, ADCC, and IBJJF competitions</p>
+            </div>
+            
+            <div class="feature-item reveal">
+                <div class="feature-icon">🚚</div>
+                <h3>Global Shipping</h3>
+                <p>Free worldwide shipping on orders over $100. Express delivery available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="about-img-main">🏭</div>
+                <div class="experience-badge">
+                    <div class="years">6+</div>
+                    <div class="text">Years of<br>Excellence</div>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <span class="section-tag">Our Story</span>
+                <h2>BORN IN <span>SIALKOT</span><br>TRUSTED WORLDWIDE</h2>
+                <p>
+                    Founded in 2019, Xelent MMA started with a simple mission: create fightwear that can withstand 
+                    the intensity of professional training while remaining affordable for every athlete.
+                </p>
+                <p>
+                    Based in Sialkot, Pakistan — a city renowned for its manufacturing excellence — we combine 
+                    traditional craftsmanship with modern performance technology. Every stitch is a testament to 
+                    our commitment to quality.
+                </p>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                        <span>IBJJF Approved</span>
+                    </div>
+                    <div class="about-feature">
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                        <span>Preshrunk Fabric</span>
+                    </div>
+                    <div class="about-feature">
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                        <span>Reinforced Seams</span>
+                    </div>
+                    <div class="about-feature">
+                        <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                        <span>Competition Ready</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn-primary">
+                    Learn More About Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <span class="section-tag">Reviews</span>
+            <h2 class="section-title">WHAT <span>ATHLETES</span> SAY</h2>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "The quality of Xelent's BJJ Gi is outstanding. I've been training for 10 years and this 
+                    is hands down the best gi I've owned at this price point. The fabric is durable yet comfortable."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <div class="author-info">
+                        <h4>Ahmed Malik</h4>
+                        <p>BJJ Purple Belt, Dubai</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "As an MMA coach, I recommend Xelent gear to all my students. The rashguards hold up 
+                    amazingly well after months of daily use. Fast shipping to the UK too!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SK</div>
+                    <div class="author-info">
+                        <h4>Sarah Khan</h4>
+                        <p>MMA Coach, London</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "Competed at ADCC wearing Xelent shorts. Zero issues, perfect fit, and they look great 
+                    in photos. Proud to support a Pakistani brand making waves globally!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RJ</div>
+                    <div class="author-info">
+                        <h4>Raza Jafri</h4>
+                        <p>Pro Grappler, California</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>JOIN THE <span style="color: var(--accent);">XELENT</span> FAMILY</h2>
+            <p>Subscribe for exclusive offers, new product drops, and training tips from pros</p>
+            <form style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto;">
+                <input type="email" placeholder="Enter your email" style="flex: 1; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: white;">
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🥋</div>
+                    <div class="logo-text">XELENT<span>MMA</span></div>
+                </a>
+                <p>Premium BJJ gear & fightwear crafted in Sialkot, Pakistan since 2019. Built for warriors, worn by champions.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="instagram" style="width: 18px; height: 18px;"></i></a>
+                    <a href="#"><i data-lucide="facebook" style="width: 18px; height: 18px;"></i></a>
+                    <a href="#"><i data-lucide="youtube" style="width: 18px; height: 18px;"></i></a>
+                    <a href="#"><i data-lucide="twitter" style="width: 18px; height: 18px;"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">BJJ Gi</a></li>
+                    <li><a href="#">Rashguards</a></li>
+                    <li><a href="#">Fight Shorts</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Athletes</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Xelent MMA. All rights reserved. Made with ❤️ in Sialkot, Pakistan</p>
+            <div class="payment-methods">
+                <div class="payment-icon">💳</div>
+                <div class="payment-icon">Pay</div>
+                <div class="payment-icon">Visa</div>
+                <div class="payment-icon">MC</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
