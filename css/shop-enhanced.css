@@ -632,6 +632,89 @@
     color: var(--text-secondary);
 }
 
+/* Promo Banner */
+.promo-banner {
+    position: relative;
+    margin: 3rem 0;
+    padding: 4rem 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.promo-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.9), rgba(0, 0, 0, 0.9)), 
+                url('https://placehold.co/1400x400/111111/DC2626?text=BJJ+Training') center/cover;
+    background-attachment: fixed;
+    transform: translateZ(0);
+}
+
+.promo-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.promo-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.promo-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.promo-content h2 span {
+    color: var(--gold);
+}
+
+.promo-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.promo-btn {
+    display: inline-flex;
+    padding: 1rem 2rem;
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.promo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+}
+
+/* Parallax Effect */
+@media (min-width: 1024px) {
+    .promo-bg {
+        background-attachment: fixed;
+    }
+}
+
 /* Load More Button */
 .load-more-container {
     display: flex;

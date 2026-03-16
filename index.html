@@ -475,6 +475,81 @@
         
         .category-link:hover { gap: 0.75rem; }
         
+        /* Parallax Banner */
+        .parallax-banner {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(220,38,38,0.3)), 
+                        url('images/fighter-2.png') center/cover;
+            background-attachment: fixed;
+            transform: scale(1.1);
+        }
+        
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 4rem 2rem;
+        }
+        
+        .parallax-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .stat-number {
+            color: var(--gold);
+        }
+        
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+        
+        .parallax-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        .parallax-content h2 span {
+            color: var(--red);
+        }
+        
+        .parallax-content p {
+            color: var(--gray-400);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         /* Featured Products */
         .featured {
             padding: 6rem 2rem;
@@ -1144,6 +1219,33 @@
         </div>
     </section>
 
+    <!-- Parallax Banner -->
+    <section class="parallax-banner">
+        <div class="parallax-bg"></div>
+        <div class="parallax-content">
+            <div class="parallax-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50000">0</span>+
+                    <span class="stat-label">Gis Sold</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="40">0</span>+
+                    <span class="stat-label">Countries</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="6">0</span>+
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+            <h2>Built for Warriors. <span>Worn by Champions.</span></h2>
+            <p>Every stitch tells a story of Sialkot craftsmanship. IBJJF approved competition gear trusted by athletes worldwide.</p>
+            <a href="shop.html" class="btn-primary">
+                <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
+                Shop Collection
+            </a>
+        </div>
+    </section>
+
     <!-- Featured Products -->
     <section class="featured" id="shop">
         <div class="section-header">
@@ -1478,6 +1580,35 @@
         }, { threshold: 0.5 });
         
         counters.forEach(counter => counterObserver.observe(counter));
+        // Counter Animation for Parallax Stats
+        const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+        
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stat = entry.target;
+                    const target = parseInt(stat.getAttribute('data-count'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    
+                    const updateStat = () => {
+                        current += step;
+                        if (current < target) {
+                            stat.textContent = Math.floor(current).toLocaleString();
+                            requestAnimationFrame(updateStat);
+                        } else {
+                            stat.textContent = target.toLocaleString();
+                        }
+                    };
+                    
+                    updateStat();
+                    statObserver.unobserve(stat);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statNumbers.forEach(stat => statObserver.observe(stat));
     </script>
 </body>
 </html>
