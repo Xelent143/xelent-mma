@@ -61,13 +61,46 @@
         /* Navigation */
         .nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 40px; left: 0; right: 0;
             z-index: 1000;
             padding: 1rem 2rem;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             transition: all 0.3s ease;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1001;
+            background: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+        }
+
+        .trust-bar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .trust-item i {
+            color: var(--red);
+            width: 16px;
+            height: 16px;
         }
         
         .nav-container {
@@ -94,6 +127,21 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 6px;
+        }
+        
+        .logo-icon-fallback {
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
         }
         
         .logo-text {
@@ -206,7 +254,7 @@
             z-index: 2;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 8rem 2rem 4rem;
+            padding: 10rem 2rem 4rem;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -1033,6 +1081,279 @@
         .reveal-delay-3 { transition-delay: 0.3s; }
         .reveal-delay-4 { transition-delay: 0.4s; }
         
+        /* Gi Finder Quiz Styles */
+        .gi-finder {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);
+        }
+        
+        .gi-finder .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .quiz-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+        }
+        
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+            border-radius: 4px;
+            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 33%;
+        }
+        
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            font-weight: 500;
+            min-width: 80px;
+            text-align: right;
+        }
+        
+        .quiz-step {
+            display: none;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        .quiz-step.active {
+            display: block;
+        }
+        
+        .quiz-question {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+        
+        .quiz-options.color-options {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .quiz-option {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(220, 38, 38, 0.2);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--red);
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.05));
+            box-shadow: 0 0 0 2px var(--red), 0 12px 30px rgba(220, 38, 38, 0.25);
+        }
+        
+        .option-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(220, 38, 38, 0.1));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        .option-desc {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            line-height: 1.4;
+        }
+        
+        /* Color Options */
+        .color-option {
+            padding: 1.5rem;
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+        
+        .color-swatch {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .color-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+        
+        /* Quiz Result */
+        .quiz-result {
+            display: none;
+            animation: fadeInUp 0.6s ease forwards;
+            text-align: center;
+        }
+        
+        .quiz-result.active {
+            display: block;
+        }
+        
+        .result-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--gray-400);
+        }
+        
+        .recommended-product {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .recommended-product .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--surface-light), var(--surface));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .recommended-product .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recommended-product .product-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .recommended-product .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.75rem;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+        
+        .recommended-product h4 {
+            font-size: 1.75rem;
+            color: var(--white);
+            margin: 0;
+        }
+        
+        .recommended-product .reason {
+            color: var(--gray-400);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .recommended-product .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .recommended-product .feature-tag {
+            padding: 0.35rem 0.75rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--red);
+        }
+        
+        .recommended-product .price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+        }
+        
+        .result-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .brand-story-content {
@@ -1044,7 +1365,8 @@
             }
             
             .hero {
-                background-position: 70% center;
+                background-position: 65% center;
+                background-attachment: scroll;
             }
             
             .hero-overlay {
@@ -1057,6 +1379,22 @@
         }
         
         @media (max-width: 768px) {
+            .trust-bar-content {
+                gap: 1rem;
+            }
+            
+            .trust-item {
+                font-size: 0.75rem;
+            }
+            
+            .trust-item-hide-mobile {
+                display: none;
+            }
+            
+            .nav {
+                top: 36px;
+            }
+            
             .nav-links { display: none; }
             
             .hero { 
@@ -1067,14 +1405,14 @@
             .hero-overlay {
                 background: linear-gradient(90deg, 
                     rgba(0,0,0,0.95) 0%, 
-                    rgba(0,0,0,0.92) 50%, 
-                    rgba(0,0,0,0.85) 100%);
+                    rgba(0,0,0,0.88) 60%, 
+                    rgba(0,0,0,0.7) 100%);
             }
             
             .hero-content {
                 align-items: center;
                 text-align: center;
-                padding: 7rem 1.5rem 3rem;
+                padding: 10rem 1.5rem 3rem;
             }
             
             .hero h1 {
@@ -1114,15 +1452,109 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            /* Quiz Mobile Styles */
+            .quiz-container {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+            
+            .quiz-question {
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .quiz-options.color-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quiz-option {
+                padding: 1.5rem;
+                flex-direction: row;
+                text-align: left;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .quiz-option.color-option {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.25rem 0.75rem;
+            }
+            
+            .option-icon {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 0;
+            }
+            
+            .option-icon i {
+                width: 24px !important;
+                height: 24px !important;
+            }
+            
+            .recommended-product {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            
+            .recommended-product .product-image {
+                height: 200px;
+            }
+            
+            .recommended-product h4 {
+                font-size: 1.5rem;
+            }
+            
+            .recommended-product .price {
+                font-size: 2rem;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .result-actions .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-bar-content">
+            <span class="trust-item">
+                <i data-lucide="truck" style="width: 16px; height: 16px;"></i>
+                Free Shipping $100+
+            </span>
+            <span class="trust-item">
+                <i data-lucide="shield-check" style="width: 16px; height: 16px;"></i>
+                IBJJF Approved
+            </span>
+            <span class="trust-item trust-item-hide-mobile">
+                <i data-lucide="star" style="width: 16px; height: 16px;"></i>
+                4.9/5 (500+ Reviews)
+            </span>
+            <span class="trust-item trust-item-hide-mobile">
+                <i data-lucide="package" style="width: 16px; height: 16px;"></i>
+                Made in Sialkot
+            </span>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="#" class="logo">
-                <div class="logo-icon">🥋</div>
+                <div class="logo-icon">
+                    <img src="images/xelent-logo.svg" alt="Xelent MMA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-icon-fallback\'>X</span>';">
+                </div>
                 <div class="logo-text">XELENT<span>MMA</span></div>
             </a>
             
@@ -1396,6 +1828,108 @@
         </div>
     </section>
 
+    <!-- Gi Finder Quiz Section -->
+    <section class="gi-finder" id="gi-finder">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Quiz</span>
+                <h2 class="section-title">Find Your Perfect <span>Gi</span></h2>
+                <p class="section-subtitle">Answer 3 quick questions and we'll recommend the best gi for you</p>
+            </div>
+            
+            <div class="quiz-container">
+                <!-- Progress Bar -->
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-text">Step <span id="currentStep">1</span> of 3</span>
+                </div>
+                
+                <!-- Step 1: Experience Level -->
+                <div class="quiz-step active" data-step="1">
+                    <h3 class="quiz-question">What's your experience level?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="beginner" data-question="experience">
+                            <span class="option-icon"><i data-lucide="user" style="width: 32px; height: 32px;"></i></span>
+                            <span class="option-title">Beginner</span>
+                            <span class="option-desc">Just starting my BJJ journey</span>
+                        </button>
+                        <button class="quiz-option" data-value="intermediate" data-question="experience">
+                            <span class="option-icon"><i data-lucide="dumbbell" style="width: 32px; height: 32px;"></i></span>
+                            <span class="option-title">Intermediate</span>
+                            <span class="option-desc">Training 2-3 times per week</span>
+                        </button>
+                        <button class="quiz-option" data-value="competitor" data-question="experience">
+                            <span class="option-icon"><i data-lucide="trophy" style="width: 32px; height: 32px;"></i></span>
+                            <span class="option-title">Competitor</span>
+                            <span class="option-desc">Competing at tournaments</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Budget -->
+                <div class="quiz-step" data-step="2">
+                    <h3 class="quiz-question">What's your budget?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="budget" data-question="budget">
+                            <span class="option-icon"><i data-lucide="wallet" style="width: 32px; height: 32px;"></i></span>
+                            <span class="option-title">Under $100</span>
+                            <span class="option-desc">Entry-level quality</span>
+                        </button>
+                        <button class="quiz-option" data-value="mid" data-question="budget">
+                            <span class="option-icon"><i data-lucide="badge-dollar-sign" style="width: 32px; height: 32px;"></i></span>
+                            <span class="option-title">$100 - $150</span>
+                            <span class="option-desc">Best value for money</span>
+                        </button>
+                        <button class="quiz-option" data-value="premium" data-question="budget">
+                            <span class="option-icon"><i data-lucide="crown" style="width: 32px; height: 32px;"></i></span>
+                            <span class="option-title">$150+</span>
+                            <span class="option-desc">Premium competition gear</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Preferred Color -->
+                <div class="quiz-step" data-step="3">
+                    <h3 class="quiz-question">Preferred color?</h3>
+                    <div class="quiz-options color-options">
+                        <button class="quiz-option color-option" data-value="black" data-question="color">
+                            <span class="color-swatch" style="background: linear-gradient(135deg, #1a1a1a, #000000);"></span>
+                            <span class="color-name">Black</span>
+                        </button>
+                        <button class="quiz-option color-option" data-value="white" data-question="color">
+                            <span class="color-swatch" style="background: linear-gradient(135deg, #f5f5f5, #ffffff); border: 2px solid #333;"></span>
+                            <span class="color-name">White</span>
+                        </button>
+                        <button class="quiz-option color-option" data-value="blue" data-question="color">
+                            <span class="color-swatch" style="background: linear-gradient(135deg, #3b82f6, #1e40af);"></span>
+                            <span class="color-name">Blue</span>
+                        </button>
+                        <button class="quiz-option color-option" data-value="navy" data-question="color">
+                            <span class="color-swatch" style="background: linear-gradient(135deg, #1e3a5f, #0f172a);"></span>
+                            <span class="color-name">Navy</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Results -->
+                <div class="quiz-result" id="quizResult">
+                    <h3 class="result-title">We recommend:</h3>
+                    <div class="recommended-product" id="recommendedProduct">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                    <div class="result-actions">
+                        <button class="btn-secondary" id="retakeQuiz">
+                            <i data-lucide="refresh-cw" style="width: 18px; height: 18px;"></i>
+                            Retake Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Brand Story Section -->
     <section class="brand-story" id="about">
         <div class="brand-story-content">
@@ -1508,6 +2042,148 @@
         </div>
     </section>
 
+    <!-- Athletes Section -->
+    <section class="athletes" id="athletes">
+        <div class="section-header">
+            <span class="section-tag">Team Xelent</span>
+            <h2 class="section-title">Proudly Worn by <span>Champions</span></h2>
+            <p class="section-subtitle">From Sialkot to the world stage — athletes who trust Xelent</p>
+        </div>
+        
+        <div class="athletes-grid">
+            <!-- Featured Athlete -->
+            <div class="athlete-card featured reveal">
+                <div class="athlete-image">
+                    <div class="athlete-photo-placeholder">
+                        <i data-lucide="user" style="width: 80px; height: 80px;"></i>
+                    </div>
+                    <div class="athlete-badges">
+                        <span class="athlete-badge badge-champion">
+                            <i data-lucide="trophy" style="width: 12px; height: 12px;"></i>
+                            National Champion
+                        </span>
+                        <span class="athlete-badge badge-team">Team Xelent</span>
+                    </div>
+                </div>
+                <div class="athlete-info">
+                    <span class="athlete-title">Pakistan National Champion</span>
+                    <h3>Bilal Ahmad</h3>
+                    <p class="athlete-quote">"Xelent gis hold up through the toughest training camps. Proud to represent a Pakistani brand on the world stage. The quality rivals anything from top international brands."</p>
+                    <div class="athlete-stats">
+                        <span class="achievement">
+                            <i data-lucide="medal" style="width: 14px; height: 14px;"></i>
+                            Gold - 2024 Nationals
+                        </span>
+                        <span class="achievement">
+                            <i data-lucide="award" style="width: 14px; height: 14px;"></i>
+                            ADCC Trials Finalist
+                        </span>
+                        <span class="achievement">
+                            <i data-lucide="globe" style="width: 14px; height: 14px;"></i>
+                            IBJJF Competitor
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Athletes List -->
+            <div class="athletes-list">
+                <div class="athlete-item reveal reveal-delay-1">
+                    <div class="athlete-item-image">
+                        <div class="athlete-item-placeholder">
+                            <i data-lucide="user" style="width: 32px; height: 32px;"></i>
+                        </div>
+                    </div>
+                    <div class="athlete-item-info">
+                        <h4>Omar Hassan</h4>
+                        <p>UAE JJF Gold Medalist</p>
+                        <span class="athlete-item-tag">Middleweight Division</span>
+                    </div>
+                </div>
+                
+                <div class="athlete-item reveal reveal-delay-2">
+                    <div class="athlete-item-image">
+                        <div class="athlete-item-placeholder">
+                            <i data-lucide="user" style="width: 32px; height: 32px;"></i>
+                        </div>
+                    </div>
+                    <div class="athlete-item-info">
+                        <h4>Fatima Ali</h4>
+                        <p>Multiple Time National Champion</p>
+                        <span class="athlete-item-tag">Women's Division</span>
+                    </div>
+                </div>
+                
+                <div class="athlete-item reveal reveal-delay-3">
+                    <div class="athlete-item-image">
+                        <div class="athlete-item-placeholder">
+                            <i data-lucide="user" style="width: 32px; height: 32px;"></i>
+                        </div>
+                    </div>
+                    <div class="athlete-item-info">
+                        <h4>Tariq Mehmood</h4>
+                        <p>Pan Asian Silver Medalist</p>
+                        <span class="athlete-item-tag">Heavyweight Division</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factory Story Section -->
+    <section class="factory-story" id="factory-story">
+        <div class="factory-story-content">
+            <div class="factory-story-text">
+                <span class="section-tag">Our Heritage</span>
+                <h2>Crafted in <span>Sialkot</span>,<br>Worn Worldwide</h2>
+                <p class="factory-intro">
+                    For over a century, Sialkot has been the world's premier manufacturing hub for sporting goods. 
+                    Xelent continues this legacy, combining traditional Pakistani craftsmanship with modern fightwear innovation.
+                </p>
+                <p class="factory-detail">
+                    Every Xelent gi passes through the hands of master artisans who have honed their craft for generations. 
+                    From the pearl weave cotton to the reinforced stitching, quality isn't just a promise — it's our heritage.
+                </p>
+                
+                <div class="factory-stats">
+                    <div class="factory-stat reveal">
+                        <span class="factory-stat-number">250+</span>
+                        <span class="factory-stat-label">Skilled Artisans</span>
+                    </div>
+                    <div class="factory-stat reveal reveal-delay-1">
+                        <span class="factory-stat-number">50K+</span>
+                        <span class="factory-stat-label">Units/Month</span>
+                    </div>
+                    <div class="factory-stat reveal reveal-delay-2">
+                        <span class="factory-stat-number">40+</span>
+                        <span class="factory-stat-label">Countries</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn-secondary watch-story-btn">
+                    <i data-lucide="play-circle" style="width: 20px; height: 20px;"></i>
+                    Watch Our Story
+                </a>
+            </div>
+            
+            <div class="factory-video-wrapper reveal reveal-delay-1">
+                <div class="factory-video">
+                    <div class="video-placeholder">
+                        <img src="images/factory-thumb.jpg" alt="Xelent Factory Sialkot" onerror="this.style.display='none'">
+                        <div class="video-placeholder-fallback">
+                            <i data-lucide="factory" style="width: 64px; height: 64px;"></i>
+                            <span>Factory Tour Video</span>
+                        </div>
+                        <button class="play-button" aria-label="Play video">
+                            <i data-lucide="play" style="width: 28px; height: 28px;"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="video-caption">Inside our Sialkot facility where craftsmanship meets innovation</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Newsletter Section -->
     <section class="newsletter">
         <h3>Join the <span style="color: var(--red);">Xelent</span> Family</h3>
@@ -1523,7 +2199,9 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="index.html" class="logo">
-                    <div class="logo-icon">🥋</div>
+                    <div class="logo-icon">
+                        <img src="images/xelent-logo.svg" alt="Xelent MMA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-icon-fallback\'>X</span>';">
+                    </div>
                     <div class="logo-text">XELENT<span>MMA</span></div>
                 </a>
                 <p>Premium BJJ gear and fightwear crafted in Sialkot, Pakistan since 2019. Built for warriors, worn by champions.</p>
