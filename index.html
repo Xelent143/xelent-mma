@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Xelent MMA - Premium BJJ Gi, Rashguards & MMA Gear. Made in Sialkot, Pakistan since 2019. Free worldwide shipping.">
-    <title>Xelent MMA | Premium BJJ Gear & Fightwear</title>
+    <meta name="description" content="Premium BJJ gi, rashguards, and MMA fightwear crafted in Sialkot, Pakistan. IBJJF-approved competition gear. Free worldwide shipping on orders over $100.">
+    <title>Xelent MMA | Premium BJJ Gi & Fightwear | Made in Sialkot</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,35 +16,46 @@
     
     <style>
         :root {
-            --primary: #000000;
-            --accent: #DC2626;
-            --accent-dark: #991B1B;
+            --black: #000000;
+            --black-soft: #0a0a0a;
+            --black-light: #111111;
+            --black-lighter: #1a1a1a;
+            --red: #DC2626;
+            --red-dark: #991B1B;
+            --red-light: #EF4444;
             --gold: #F59E0B;
-            --background: #0a0a0a;
-            --surface: #111111;
-            --surface-light: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #9ca3af;
-            --border: #27272a;
+            --gold-dark: #B45309;
+            --white: #ffffff;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-800: #27272a;
+            
+            --background: var(--black-soft);
+            --surface: var(--black-light);
+            --surface-light: var(--black-lighter);
+            --text-primary: var(--white);
+            --text-secondary: var(--gray-400);
+            --border: var(--gray-800);
+            --accent: var(--red);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: 'Inter', sans-serif;
             background: var(--background);
             color: var(--text-primary);
             overflow-x: hidden;
+            line-height: 1.6;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.02em;
+            line-height: 1.1;
         }
         
         /* Navigation */
@@ -53,7 +64,7 @@
             top: 0; left: 0; right: 0;
             z-index: 1000;
             padding: 1rem 2rem;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             transition: all 0.3s ease;
@@ -77,7 +88,7 @@
         .logo-icon {
             width: 45px;
             height: 45px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -86,15 +97,13 @@
         }
         
         .logo-text {
-            color: var(--text-primary);
+            color: var(--white);
             font-family: 'Oswald', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
         }
         
-        .logo-text span {
-            color: var(--accent);
-        }
+        .logo-text span { color: var(--red); }
         
         .nav-links {
             display: flex;
@@ -103,7 +112,7 @@
         }
         
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--gray-400);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
@@ -113,10 +122,7 @@
             position: relative;
         }
         
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent);
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--red); }
         
         .nav-links a::after {
             content: '';
@@ -125,13 +131,11 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: var(--red);
             transition: width 0.3s ease;
         }
         
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after { width: 100%; }
         
         .nav-actions {
             display: flex;
@@ -145,21 +149,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-secondary);
+            color: var(--gray-400);
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
+            border-radius: 8px;
         }
         
         .nav-icon:hover {
-            color: var(--accent);
+            color: var(--red);
+            background: rgba(220, 38, 38, 0.1);
         }
         
         .cart-count {
             position: absolute;
             top: 0;
             right: 0;
-            background: var(--accent);
+            background: var(--red);
             color: white;
             font-size: 0.7rem;
             font-weight: 700;
@@ -170,385 +176,185 @@
             align-items: center;
             justify-content: center;
         }
-
+        
         /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120%;
-            background-image: url('images/fighter-1.png');
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('images/fighter-1.png');
             background-size: cover;
-            background-position: center 20%;
-            background-repeat: no-repeat;
-            will-change: transform;
-            z-index: 0;
+            background-position: center;
+            background-attachment: fixed;
         }
         
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.95) 100%),
-                radial-gradient(ellipse at 30% 20%, rgba(220, 38, 38, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 40%);
-            z-index: 1;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 50%, rgba(220,38,38,0.1) 100%);
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 10rem 2rem 6rem;
-            text-align: center;
+            padding: 8rem 2rem 4rem;
+            width: 100%;
         }
         
-        /* Text Reveal Animation */
-        .hero-headline {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+            animation: fadeInUp 0.6s ease forwards;
         }
         
-        .hero-headline .line {
-            display: block;
-            overflow: hidden;
-        }
-        
-        .hero-headline .line-inner {
-            display: block;
-            transform: translateY(100%);
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
             opacity: 0;
-            animation: slideUpReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         
-        .hero-headline .line:nth-child(1) .line-inner { animation-delay: 0.2s; }
-        .hero-headline .line:nth-child(2) .line-inner { animation-delay: 0.4s; }
-        
-        .hero-headline .highlight-red {
-            color: var(--accent);
+        .hero h1 .highlight {
+            color: var(--red);
             text-shadow: 0 0 40px rgba(220, 38, 38, 0.5);
+            display: block;
         }
         
-        .hero-headline .highlight-gold {
-            color: var(--gold);
-            text-shadow: 0 0 40px rgba(245, 158, 11, 0.4);
-        }
-        
-        @keyframes slideUpReveal {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .hero-subheadline {
+        .hero-subtitle {
+            color: var(--gray-400);
             font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--text-secondary);
             margin-bottom: 2rem;
+            max-width: 500px;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
             opacity: 0;
-            animation: fadeInUp 0.8s ease 0.6s forwards;
         }
         
         /* Trust Badges */
         .trust-badges {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
             margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
             opacity: 0;
-            animation: fadeInUp 0.8s ease 0.8s forwards;
         }
         
         .trust-badge {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            transition: all 0.3s ease;
         }
         
-        .trust-badge:hover {
-            background: rgba(220, 38, 38, 0.1);
-            border-color: rgba(220, 38, 38, 0.3);
-            color: var(--text-primary);
-        }
+        .trust-badge i { color: var(--red); }
         
-        .trust-badge i {
-            color: var(--gold);
-            width: 16px;
-            height: 16px;
-        }
-        
-        /* CTA Buttons */
+        /* Hero CTAs */
         .hero-cta {
             display: flex;
-            justify-content: center;
-            gap: 1.25rem;
+            gap: 1rem;
             flex-wrap: wrap;
             margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
             opacity: 0;
-            animation: fadeInUp 0.8s ease 1s forwards;
         }
         
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1.1rem 2.5rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border-radius: 8px;
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
+            letter-spacing: 0.05em;
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
         }
         
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1.1rem 2.5rem;
-            background: transparent;
-            color: var(--text-primary);
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border);
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
         }
         
         .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+            border-color: var(--red);
+            color: var(--red);
             background: rgba(220, 38, 38, 0.1);
-        }
-        
-        .play-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         /* Hero Stats */
         .hero-stats {
             display: flex;
-            justify-content: center;
-            gap: 4rem;
-            flex-wrap: wrap;
+            gap: 3rem;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
             opacity: 0;
-            animation: fadeInUp 0.8s ease 1.2s forwards;
         }
         
-        .stat-item {
-            text-align: center;
-            position: relative;
-        }
-        
-        .stat-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: -2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
-        }
+        .stat-item { text-align: center; }
         
         .stat-value {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--red);
             line-height: 1;
         }
         
         .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            color: var(--gray-400);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-top: 0.5rem;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
         }
         
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 1.4s forwards;
-        }
-        
-        .scroll-text {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-secondary);
-        }
-        
-        .scroll-mouse {
-            width: 26px;
-            height: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 13px;
-            position: relative;
-        }
-        
-        .scroll-wheel {
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 2px;
-            animation: scrollWheel 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes scrollWheel {
-            0%, 100% { 
-                opacity: 1; 
-                transform: translateX(-50%) translateY(0); 
-            }
-            50% { 
-                opacity: 0.3; 
-                transform: translateX(-50%) translateY(12px); 
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Video Modal */
-        .video-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        
-        .video-modal.active {
-            display: flex;
-        }
-        
-        .video-modal-content {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            aspect-ratio: 16/9;
-            background: var(--surface);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .video-modal-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-        }
-        
-        .video-modal-close:hover {
-            background: var(--accent);
-        }
-
-        /* Section Header */
+        /* Section Styles */
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -561,7 +367,7 @@
             border: 1px solid rgba(220, 38, 38, 0.3);
             border-radius: 50px;
             font-size: 0.8rem;
-            color: var(--accent);
+            color: var(--red);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -573,16 +379,15 @@
             margin-bottom: 1rem;
         }
         
-        .section-title span {
-            color: var(--accent);
-        }
+        .section-title span { color: var(--red); }
         
         .section-subtitle {
-            color: var(--text-secondary);
+            color: var(--gray-400);
             max-width: 600px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
-
+        
         /* Categories Section */
         .categories {
             padding: 6rem 2rem;
@@ -590,278 +395,193 @@
         }
         
         .categories-grid {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
         
         .category-card {
             background: var(--background);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             position: relative;
-            height: 320px;
         }
         
         .category-card:hover {
             transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 30px 60px rgba(220, 38, 38, 0.2);
-            z-index: 10;
-        }
-        
-        .category-image-wrapper {
-            position: relative;
-            height: 100%;
-            overflow: hidden;
+            border-color: var(--red);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
         }
         
         .category-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--surface-light), var(--surface));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s ease;
         }
         
-        .category-card:hover .category-image {
+        .category-card:hover .category-image img {
             transform: scale(1.1);
         }
         
-        .category-overlay {
+        .category-image::after {
+            content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(10, 10, 10, 0.2) 0%, rgba(10, 10, 10, 0.9) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+        }
+        
+        .category-content {
             padding: 1.5rem;
         }
         
         .category-content h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
         }
         
         .category-content p {
-            color: var(--text-secondary);
+            color: var(--gray-400);
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
         
         .category-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
+            color: var(--red);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             transition: gap 0.3s ease;
         }
         
-        .category-link:hover {
-            gap: 0.75rem;
-        }
-
-        /* Trending Products Section */
-        .trending {
+        .category-link:hover { gap: 0.75rem; }
+        
+        /* Featured Products */
+        .featured {
             padding: 6rem 2rem;
-            background: var(--background);
-        }
-        
-        .trending-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .trending-title-group {
-            text-align: left;
-        }
-        
-        .view-all-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.875rem 1.75rem;
-            background: transparent;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: 10px;
-            border: 2px solid var(--accent);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .view-all-btn:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
         }
         
         .products-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
         }
         
-        /* Product Card with 3D Tilt */
         .product-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             transform-style: preserve-3d;
-            perspective: 1000px;
-            opacity: 0;
-            transform: translateY(30px);
         }
-        
-        .product-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .product-card.visible:nth-child(1) { transition-delay: 0.05s; }
-        .product-card.visible:nth-child(2) { transition-delay: 0.1s; }
-        .product-card.visible:nth-child(3) { transition-delay: 0.15s; }
-        .product-card.visible:nth-child(4) { transition-delay: 0.2s; }
-        .product-card.visible:nth-child(5) { transition-delay: 0.25s; }
-        .product-card.visible:nth-child(6) { transition-delay: 0.3s; }
-        .product-card.visible:nth-child(7) { transition-delay: 0.35s; }
-        .product-card.visible:nth-child(8) { transition-delay: 0.4s; }
         
         .product-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 25px 50px rgba(220, 38, 38, 0.2);
+            transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(10px);
+            border-color: var(--red);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .product-card-inner {
-            transition: transform 0.3s ease;
-            transform-style: preserve-3d;
-        }
-        
-        /* Product Badges */
         .product-badges {
             position: absolute;
             top: 1rem;
             left: 1rem;
+            right: 1rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            z-index: 10;
+            justify-content: space-between;
+            z-index: 2;
         }
         
-        .product-badge {
-            padding: 0.4rem 0.875rem;
-            font-weight: 700;
+        .badge {
+            padding: 0.25rem 0.75rem;
             font-size: 0.7rem;
-            border-radius: 6px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            border-radius: 4px;
         }
         
-        .product-badge-new {
+        .badge-new {
             background: var(--gold);
-            color: #000;
+            color: var(--black);
         }
         
-        .product-badge-bestseller {
-            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+        .badge-sale {
+            background: var(--red);
             color: white;
-        }
-        
-        .product-badge-sale {
-            background: var(--accent);
-            color: white;
-        }
-        
-        /* Product Image */
-        .product-image-wrapper {
-            position: relative;
-            height: 280px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1a1a1a, #252525);
         }
         
         .product-image {
+            height: 280px;
+            background: linear-gradient(135deg, var(--surface-light), var(--surface));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s ease;
         }
         
-        .product-card:hover .product-image {
-            transform: scale(1.15);
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
         }
         
-        /* Quick Add Button */
-        .quick-add-wrapper {
+        .quick-add {
             position: absolute;
             bottom: 1rem;
             left: 50%;
-            transform: translateX(-50%) translateY(30px);
+            transform: translateX(-50%) translateY(20px);
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 10;
+            padding: 0.75rem 1.5rem;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
         
-        .product-card:hover .quick-add-wrapper {
+        .product-card:hover .quick-add {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
         
-        .quick-add-btn {
-            padding: 0.75rem 1.5rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
-        }
-        
-        .quick-add-btn:hover {
-            background: var(--accent-dark);
-            transform: scale(1.05);
-        }
-        
-        /* Product Info */
         .product-info {
             padding: 1.5rem;
         }
         
         .product-category {
             font-size: 0.75rem;
-            color: var(--accent);
+            color: var(--red);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-weight: 600;
@@ -870,8 +590,11 @@
         
         .product-name {
             font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: none;
+            letter-spacing: normal;
+            font-weight: 600;
         }
         
         .product-rating {
@@ -881,15 +604,11 @@
             margin-bottom: 0.75rem;
         }
         
-        .stars {
-            color: var(--gold);
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-        }
+        .stars { color: var(--gold); font-size: 0.9rem; }
         
         .rating-count {
             font-size: 0.8rem;
-            color: var(--text-secondary);
+            color: var(--gray-400);
         }
         
         .product-price {
@@ -902,252 +621,39 @@
             font-family: 'Oswald', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--white);
         }
         
         .original-price {
             font-size: 1rem;
-            color: var(--text-secondary);
+            color: var(--gray-500);
             text-decoration: line-through;
         }
         
-        .discount-badge {
-            padding: 0.25rem 0.5rem;
-            background: rgba(220, 38, 38, 0.2);
-            color: var(--accent);
-            font-size: 0.7rem;
-            font-weight: 700;
-            border-radius: 4px;
-        }
-
         /* Brand Story Section */
         .brand-story {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
             position: relative;
             overflow: hidden;
         }
-
-        .brand-story-hero {
-            position: relative;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: var(--surface);
-        }
-
-        .brand-story-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(20,20,20,0.9) 100%),
-                        url('images/fighter-2.png');
-            background-size: cover;
-            background-position: center;
-            transform: translateZ(0);
-            will-change: transform;
-        }
-
-        .brand-story-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, 
-                rgba(10,10,10,0.3) 0%, 
-                rgba(10,10,10,0.6) 50%,
-                rgba(10,10,10,0.95) 100%);
-        }
-
-        .brand-story-content {
-            position: relative;
-            z-index: 5;
-            text-align: center;
-            padding: 4rem 2rem;
-            max-width: 900px;
-        }
-
-        .heritage-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(220, 38, 38, 0.15);
-            border: 1px solid rgba(220, 38, 38, 0.4);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-
-        .heritage-badge.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .brand-story-content h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease 0.1s;
-        }
-
-        .brand-story-content h2.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .brand-story-content h2 .highlight {
-            color: var(--accent);
-            text-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
-        }
-
-        .brand-story-subtitle {
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
-            color: var(--gold);
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease 0.2s;
-        }
-
-        .brand-story-subtitle.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .brand-story-description {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease 0.3s;
-        }
-
-        .brand-story-description.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Counter Stats */
-        .counter-stats {
-            padding: 4rem 2rem;
-            background: var(--background);
-            position: relative;
-        }
-
-        .counter-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .counter-item {
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .counter-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .counter-item.visible:nth-child(1) { transition-delay: 0.1s; }
-        .counter-item.visible:nth-child(2) { transition-delay: 0.2s; }
-        .counter-item.visible:nth-child(3) { transition-delay: 0.3s; }
-
-        .counter-item::before {
+        
+        .brand-story::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--gold));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            bottom: 0;
+            background: url('images/fighter-2.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
         }
-
-        .counter-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .counter-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15);
-        }
-
-        .counter-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(220, 38, 38, 0.1);
-            border: 1px solid rgba(220, 38, 38, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        .counter-value {
-            font-family: 'Oswald', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .counter-value .suffix {
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-
-        .counter-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Quality Promise */
-        .quality-section {
-            padding: 5rem 2rem;
-            background: var(--surface);
+        
+        .brand-story-content {
             position: relative;
-        }
-
-        .quality-grid {
+            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
@@ -1155,191 +661,94 @@
             gap: 4rem;
             align-items: center;
         }
-
-        .quality-content h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .quality-content h3 span {
-            color: var(--accent);
-        }
-
-        .quality-content > p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .quality-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .quality-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--background);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .quality-feature.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .quality-feature.visible:nth-child(1) { transition-delay: 0.1s; }
-        .quality-feature.visible:nth-child(2) { transition-delay: 0.15s; }
-        .quality-feature.visible:nth-child(3) { transition-delay: 0.2s; }
-        .quality-feature.visible:nth-child(4) { transition-delay: 0.25s; }
-
-        .quality-feature:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .quality-feature .icon-wrapper {
-            width: 40px;
-            height: 40px;
-            background: rgba(220, 38, 38, 0.1);
-            border: 1px solid rgba(220, 38, 38, 0.3);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-
-        .quality-feature h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .quality-feature p {
-            font-size: 0.85rem;
-            margin: 0;
-            color: var(--text-secondary);
-        }
-
-        /* IBJJF Badge */
-        .ibjjf-badge {
-            background: var(--background);
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .ibjjf-badge.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .ibjjf-badge::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--gold), var(--accent), var(--gold));
-            border-radius: 20px;
-            z-index: -1;
-            opacity: 0.5;
-            filter: blur(10px);
-        }
-
-        .badge-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--gold), #D97706);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-            color: #000;
-        }
-
-        .ibjjf-badge h4 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-        }
-
-        .ibjjf-badge p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        
+        .brand-story-text h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 1.5rem;
         }
-
-        .certification-list {
+        
+        .brand-story-text h2 span { color: var(--red); }
+        
+        .brand-story-text p {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .brand-promise {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .promise-item {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray-400);
         }
-
-        .cert-tag {
-            padding: 0.5rem 1rem;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--gold);
+        
+        .promise-item i { color: var(--red); }
+        
+        /* Counters */
+        .counters {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
-
+        
+        .counter-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        
+        .counter-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+        }
+        
+        .counter-label {
+            color: var(--gray-400);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+        
         /* Testimonials Section */
         .testimonials {
             padding: 6rem 2rem;
-            background: var(--background);
+            background: var(--surface);
         }
         
         .testimonials-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            margin-bottom: 4rem;
         }
         
         .testimonial-card {
-            background: var(--surface);
+            background: var(--background);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 2rem;
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
+            transition: all 0.3s ease;
         }
-        
-        .testimonial-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .testimonial-card.visible:nth-child(1) { transition-delay: 0.1s; }
-        .testimonial-card.visible:nth-child(2) { transition-delay: 0.2s; }
-        .testimonial-card.visible:nth-child(3) { transition-delay: 0.3s; }
         
         .testimonial-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.1);
+            border-color: var(--red);
+            transform: translateY(-4px);
         }
         
         .testimonial-stars {
@@ -1349,7 +758,7 @@
         }
         
         .testimonial-text {
-            color: var(--text-secondary);
+            color: var(--gray-400);
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -1364,126 +773,45 @@
         .author-avatar {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             font-size: 1.1rem;
+            color: white;
         }
         
         .author-info h4 {
             font-size: 1rem;
             margin-bottom: 0.25rem;
+            text-transform: none;
+            letter-spacing: normal;
         }
         
         .author-info p {
             font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Partner Logos Marquee */
-        .partners-section {
-            padding: 4rem 2rem;
-            background: var(--surface);
-            overflow: hidden;
+            color: var(--gray-400);
         }
         
-        .partners-label {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 2rem;
-        }
-        
-        .partners-marquee {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .partners-marquee::before,
-        .partners-marquee::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 150px;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-        
-        .partners-marquee::before {
-            left: 0;
-            background: linear-gradient(90deg, var(--surface) 0%, transparent 100%);
-        }
-        
-        .partners-marquee::after {
-            right: 0;
-            background: linear-gradient(270deg, var(--surface) 0%, transparent 100%);
-        }
-        
-        .partners-track {
-            display: flex;
-            gap: 4rem;
-            animation: marquee 30s linear infinite;
-        }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .partner-logo {
-            flex-shrink: 0;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            opacity: 0.5;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-        }
-        
-        .partner-logo:hover {
-            opacity: 1;
-            color: var(--accent);
-        }
-
         /* Newsletter Section */
-        .newsletter-section {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+        .newsletter {
+            padding: 4rem 2rem;
             text-align: center;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), transparent);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
         
-        .newsletter-content {
-            max-width: 600px;
-            margin: 0 auto;
+        .newsletter h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
         }
         
-        .newsletter-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-        }
-        
-        .newsletter-content h3 {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .newsletter-content > p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
+        .newsletter p {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
         }
         
         .newsletter-form {
@@ -1491,57 +819,26 @@
             gap: 1rem;
             max-width: 500px;
             margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .newsletter-form input {
             flex: 1;
+            min-width: 250px;
             padding: 1rem 1.5rem;
-            border-radius: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
             color: white;
             font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
         }
         
-        .newsletter-form input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
+        .newsletter-form input::placeholder { color: var(--gray-500); }
         
-        .newsletter-form input:focus {
-            border-color: white;
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .newsletter-form button {
-            padding: 1rem 2rem;
-            background: white;
-            color: var(--accent);
-            border: none;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .newsletter-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .newsletter-disclaimer {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 1.5rem;
-        }
-
         /* Footer */
         .footer {
-            background: var(--surface);
+            background: var(--black);
             border-top: 1px solid var(--border);
             padding: 4rem 2rem 2rem;
         }
@@ -1555,12 +852,10 @@
             margin-bottom: 3rem;
         }
         
-        .footer-brand .logo {
-            margin-bottom: 1rem;
-        }
+        .footer-brand .logo { margin-bottom: 1rem; }
         
-        .footer-brand > p {
-            color: var(--text-secondary);
+        .footer-brand p {
+            color: var(--gray-400);
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -1574,19 +869,19 @@
         .social-links a {
             width: 40px;
             height: 40px;
-            background: var(--background);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-secondary);
+            color: var(--gray-400);
             transition: all 0.3s ease;
         }
         
         .social-links a:hover {
-            background: var(--accent);
-            border-color: var(--accent);
+            background: var(--red);
+            border-color: var(--red);
             color: white;
         }
         
@@ -1595,24 +890,18 @@
             margin-bottom: 1.5rem;
         }
         
-        .footer-column ul {
-            list-style: none;
-        }
+        .footer-column ul { list-style: none; }
         
-        .footer-column li {
-            margin-bottom: 0.75rem;
-        }
+        .footer-column li { margin-bottom: 0.75rem; }
         
         .footer-column a {
-            color: var(--text-secondary);
+            color: var(--gray-400);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s ease;
         }
         
-        .footer-column a:hover {
-            color: var(--accent);
-        }
+        .footer-column a:hover { color: var(--red); }
         
         .footer-bottom {
             max-width: 1200px;
@@ -1627,55 +916,44 @@
         }
         
         .footer-bottom p {
-            color: var(--text-secondary);
+            color: var(--gray-400);
             font-size: 0.9rem;
         }
         
-        .payment-methods {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-        
-        .payment-icon {
-            width: 40px;
-            height: 25px;
-            background: var(--background);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         
-        @media (max-width: 992px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .counter-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .quality-grid {
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger delays */
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .brand-story-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
             }
             
             .footer-grid {
@@ -1684,70 +962,21 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+            .nav-links { display: none; }
             
-            .hero-bg {
-                background-position: 60% center;
-            }
-            
-            .hero-content {
-                padding: 8rem 1.5rem 4rem;
-            }
-            
-            .trust-badges {
-                gap: 0.75rem;
-            }
-            
-            .trust-badge {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-            }
-            
-            .hero-cta {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
+            .hero { background-attachment: scroll; }
             
             .hero-stats {
-                gap: 2rem;
-            }
-            
-            .stat-item:not(:last-child)::after {
-                display: none;
-            }
-            
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .counter-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .quality-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .newsletter-form {
                 flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .counters {
+                grid-template-columns: 1fr;
+            }
+            
+            .brand-promise {
+                grid-template-columns: 1fr;
             }
             
             .footer-grid {
@@ -1757,40 +986,6 @@
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-bg {
-                background-position: 65% center;
-            }
-            
-            .hero-overlay {
-                background: 
-                    linear-gradient(180deg, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.8) 60%, rgba(10, 10, 10, 0.98) 100%),
-                    radial-gradient(ellipse at 50% 30%, rgba(220, 38, 38, 0.15) 0%, transparent 60%);
-            }
-        }
-        
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            .hero-headline .line-inner,
-            .hero-subheadline,
-            .trust-badges,
-            .hero-cta,
-            .hero-stats,
-            .scroll-indicator {
-                animation: none;
-                opacity: 1;
-                transform: none;
-            }
-            
-            .scroll-wheel {
-                animation: none;
-            }
-            
-            .partners-track {
-                animation: none;
             }
         }
     </style>
@@ -1808,8 +1003,8 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#shop">Shop</a></li>
                 <li><a href="#categories">Categories</a></li>
-                <li><a href="#story">Our Story</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             
             <div class="nav-actions">
@@ -1829,192 +1024,150 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-bg" id="heroParallax"></div>
         <div class="hero-overlay"></div>
-        
         <div class="hero-content">
-            <h1 class="hero-headline">
-                <span class="line">
-                    <span class="line-inner">Born in <span class="highlight-red">Sialkot</span>.</span>
-                </span>
-                <span class="line">
-                    <span class="line-inner">Trusted <span class="highlight-gold">Worldwide</span>.</span>
-                </span>
+            <div class="hero-badge">
+                <span>🔥</span> Premium Fightwear Since 2019
+            </div>
+            <h1>
+                Born in Sialkot.<br>
+                <span class="highlight">Trusted Worldwide.</span>
             </h1>
-            
-            <p class="hero-subheadline">Premium BJJ Gi & Fightwear Crafted in Pakistan</p>
+            <p class="hero-subtitle">
+                Premium BJJ Gi & Fightwear crafted in Pakistan. IBJJF-approved competition gear. 
+                Free worldwide shipping on orders over $100.
+            </p>
             
             <div class="trust-badges">
                 <div class="trust-badge">
-                    <i data-lucide="truck"></i>
-                    <span>Free Shipping $100+</span>
+                    <i data-lucide="truck" style="width: 14px; height: 14px;"></i>
+                    Free Shipping $100+
                 </div>
                 <div class="trust-badge">
-                    <i data-lucide="shield-check"></i>
-                    <span>IBJJF Approved</span>
+                    <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i>
+                    IBJJF Approved
                 </div>
                 <div class="trust-badge">
-                    <i data-lucide="award"></i>
-                    <span>6+ Years Excellence</span>
+                    <i data-lucide="award" style="width: 14px; height: 14px;"></i>
+                    6+ Years
                 </div>
             </div>
             
             <div class="hero-cta">
                 <a href="#shop" class="btn-primary">
-                    <i data-lucide="shopping-bag" style="width: 20px; height: 20px;"></i>
+                    <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
                     Shop Bestsellers
                 </a>
-                <a href="#" class="btn-secondary" id="watchStoryBtn">
-                    <span class="play-icon">
-                        <i data-lucide="play" style="width: 10px; height: 10px;"></i>
-                    </span>
+                <a href="#about" class="btn-secondary">
+                    <i data-lucide="play-circle" style="width: 18px; height: 18px;"></i>
                     Watch Our Story
                 </a>
             </div>
             
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-value"><span class="counter" data-target="15">0</span>K+</div>
+                    <div class="stat-value" data-count="15000">15K+</div>
                     <div class="stat-label">Athletes</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value"><span class="counter" data-target="50">0</span>+</div>
+                    <div class="stat-value" data-count="50">50+</div>
                     <div class="stat-label">Countries</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value"><span class="counter" data-target="4.9" data-decimals="1">0</span></div>
+                    <div class="stat-value" data-count="4.9">4.9</div>
                     <div class="stat-label">Rating</div>
                 </div>
             </div>
         </div>
-        
-        <div class="scroll-indicator" id="scrollIndicator">
-            <span class="scroll-text">Scroll</span>
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-        </div>
     </section>
-    
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-modal-content">
-            <button class="video-modal-close" id="closeVideoModal">
-                <i data-lucide="x" style="width: 20px; height: 20px;"></i>
-            </button>
-            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
-                <div style="text-align: center;">
-                    <i data-lucide="play-circle" style="width: 64px; height: 64px; margin-bottom: 1rem; color: var(--accent);"></i>
-                    <p>Video coming soon</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Categories Section -->
     <section class="categories" id="categories">
         <div class="section-header">
             <span class="section-tag">Collections</span>
-            <h2 class="section-title">SHOP BY <span>CATEGORY</span></h2>
+            <h2 class="section-title">Shop by <span>Category</span></h2>
             <p class="section-subtitle">Professional fightwear designed for training and competition</p>
         </div>
         
         <div class="categories-grid">
-            <div class="category-card scroll-reveal">
-                <div class="category-image-wrapper">
-                    <img src="images/products/bjj-gi-white.png" alt="BJJ Gi" class="category-image">
-                    <div class="category-overlay">
-                        <div class="category-content">
-                            <h3>BJJ Gi</h3>
-                            <p>Premium pearl weave kimonos for Brazilian Jiu-Jitsu</p>
-                            <a href="#" class="category-link">
-                                Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="category-card reveal">
+                <div class="category-image">
+                    <img src="images/bjj-gi-black.png" alt="BJJ Gi">
+                </div>
+                <div class="category-content">
+                    <h3>BJJ Gi</h3>
+                    <p>Premium pearl weave kimonos for Brazilian Jiu-Jitsu</p>
+                    <a href="#" class="category-link">
+                        Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
                 </div>
             </div>
             
-            <div class="category-card scroll-reveal">
-                <div class="category-image-wrapper">
-                    <img src="images/products/rashguard-blue.png" alt="No-Gi" class="category-image">
-                    <div class="category-overlay">
-                        <div class="category-content">
-                            <h3>No-Gi</h3>
-                            <p>Compression gear for grappling and MMA training</p>
-                            <a href="#" class="category-link">
-                                Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="category-card reveal reveal-delay-1">
+                <div class="category-image">
+                    <img src="images/fighter-1.png" alt="No-Gi">
+                </div>
+                <div class="category-content">
+                    <h3>No-Gi / Rashguards</h3>
+                    <p>Compression gear for grappling and MMA training</p>
+                    <a href="#" class="category-link">
+                        Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
                 </div>
             </div>
             
-            <div class="category-card scroll-reveal">
-                <div class="category-image-wrapper">
-                    <img src="images/products/fight-shorts-black.png" alt="Fight Shorts" class="category-image">
-                    <div class="category-overlay">
-                        <div class="category-content">
-                            <h3>Fight Shorts</h3>
-                            <p>Flexible shorts for grappling & striking</p>
-                            <a href="#" class="category-link">
-                                Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="category-card reveal reveal-delay-2">
+                <div class="category-image">
+                    <img src="images/fighter-2.png" alt="Fight Shorts">
+                </div>
+                <div class="category-content">
+                    <h3>Fight Shorts</h3>
+                    <p>Flexible shorts designed for grappling and striking</p>
+                    <a href="#" class="category-link">
+                        Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
                 </div>
             </div>
             
-            <div class="category-card scroll-reveal">
-                <div class="category-image-wrapper">
-                    <img src="images/products/hand-wraps.png" alt="Accessories" class="category-image">
-                    <div class="category-overlay">
-                        <div class="category-content">
-                            <h3>Accessories</h3>
-                            <p>Hand wraps, belts, bags and training essentials</p>
-                            <a href="#" class="category-link">
-                                Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="category-card reveal reveal-delay-3">
+                <div class="category-image">
+                    <img src="images/fighter-3.png" alt="Accessories">
+                </div>
+                <div class="category-content">
+                    <h3>Accessories</h3>
+                    <p>Belts, hand wraps, bags, and training essentials</p>
+                    <a href="#" class="category-link">
+                        Shop Now <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trending Products Section -->
-    <section class="trending" id="shop">
-        <div class="trending-header">
-            <div class="trending-title-group">
-                <span class="section-tag">Trending Now</span>
-                <h2 class="section-title">FEATURED <span>PRODUCTS</span></h2>
-            </div>
-            <a href="#" class="view-all-btn">
-                View All <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-            </a>
+    <!-- Featured Products -->
+    <section class="featured" id="shop">
+        <div class="section-header">
+            <span class="section-tag">Trending Now</span>
+            <h2 class="section-title">Featured <span>Products</span></h2>
+            <p class="section-subtitle">Our most popular gear chosen by champions</p>
         </div>
         
         <div class="products-grid">
             <!-- Product 1 -->
-            <div class="product-card scroll-reveal" data-tilt>
+            <div class="product-card reveal">
                 <div class="product-badges">
-                    <span class="product-badge product-badge-bestseller">Bestseller</span>
+                    <span class="badge badge-new">New</span>
                 </div>
-                <div class="product-image-wrapper">
-                    <img src="images/bjj-gi-black.png" alt="Elite Pro Gi" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
+                <div class="product-image">
+                    <img src="images/bjj-gi-black.png" alt="Elite Pro Gi">
+                    <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
                     <div class="product-category">BJJ Gi</div>
                     <h3 class="product-name">Elite Pro Gi - Black</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(128 reviews)</span>
+                        <span class="rating-count">(128)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$149</span>
@@ -2023,26 +1176,20 @@
             </div>
             
             <!-- Product 2 -->
-            <div class="product-card scroll-reveal" data-tilt>
+            <div class="product-card reveal reveal-delay-1">
                 <div class="product-badges">
-                    <span class="product-badge product-badge-sale">-20%</span>
-                    <span class="product-badge product-badge-new">New</span>
+                    <span class="badge badge-sale">-20%</span>
                 </div>
-                <div class="product-image-wrapper">
-                    <img src="images/products/rashguard-venom.png" alt="Venom Rashguard" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
+                <div class="product-image">
+                    <img src="images/fighter-1.png" alt="Venom Rashguard">
+                    <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Rashguard</div>
                     <h3 class="product-name">Venom Compression Long Sleeve</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(89 reviews)</span>
+                        <span class="rating-count">(89)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$39</span>
@@ -2052,25 +1199,17 @@
             </div>
             
             <!-- Product 3 -->
-            <div class="product-card scroll-reveal" data-tilt>
-                <div class="product-badges">
-                    <span class="product-badge product-badge-bestseller">Bestseller</span>
-                </div>
-                <div class="product-image-wrapper">
-                    <img src="images/products/fight-shorts-pro.png" alt="Fight Shorts" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
+            <div class="product-card reveal reveal-delay-2">
+                <div class="product-image">
+                    <img src="images/fighter-2.png" alt="Fight Shorts">
+                    <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
                     <div class="product-category">Fight Shorts</div>
                     <h3 class="product-name">Flex Pro Grappling Shorts</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(156 reviews)</span>
+                        <span class="rating-count">(156)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$45</span>
@@ -2079,134 +1218,23 @@
             </div>
             
             <!-- Product 4 -->
-            <div class="product-card scroll-reveal" data-tilt>
+            <div class="product-card reveal reveal-delay-3">
                 <div class="product-badges">
-                    <span class="product-badge product-badge-new">New</span>
+                    <span class="badge badge-new">New</span>
                 </div>
-                <div class="product-image-wrapper">
-                    <img src="images/products/bjj-gi-white.png" alt="Competition Lite Gi" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
+                <div class="product-image">
+                    <img src="images/fighter-3.png" alt="Competition Gi">
+                    <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
                     <div class="product-category">BJJ Gi</div>
                     <h3 class="product-name">Competition Lite Gi - White</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(74 reviews)</span>
+                        <span class="rating-count">(74)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$129</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 5 -->
-            <div class="product-card scroll-reveal" data-tilt>
-                <div class="product-image-wrapper">
-                    <img src="images/products/rashguard-base.png" alt="Base Layer" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Rashguard</div>
-                    <h3 class="product-name">Base Layer Short Sleeve</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★☆</span>
-                        <span class="rating-count">(203 reviews)</span>
-                    </div>
-                    <div class="product-price">
-                        <span class="current-price">$29</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 6 -->
-            <div class="product-card scroll-reveal" data-tilt>
-                <div class="product-badges">
-                    <span class="product-badge product-badge-sale">-15%</span>
-                </div>
-                <div class="product-image-wrapper">
-                    <img src="images/products/mma-shorts.png" alt="MMA Shorts" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Fight Shorts</div>
-                    <h3 class="product-name">MMA Hybrid Training Shorts</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span class="rating-count">(112 reviews)</span>
-                    </div>
-                    <div class="product-price">
-                        <span class="current-price">$38</span>
-                        <span class="original-price">$45</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 7 -->
-            <div class="product-card scroll-reveal" data-tilt>
-                <div class="product-badges">
-                    <span class="product-badge product-badge-bestseller">Bestseller</span>
-                </div>
-                <div class="product-image-wrapper">
-                    <img src="images/products/bjj-gi-navy.png" alt="Titan Gi" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">BJJ Gi</div>
-                    <h3 class="product-name">Titan Heavyweight Gi - Navy</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span class="rating-count">(95 reviews)</span>
-                    </div>
-                    <div class="product-price">
-                        <span class="current-price">$179</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 8 -->
-            <div class="product-card scroll-reveal" data-tilt>
-                <div class="product-badges">
-                    <span class="product-badge product-badge-new">New</span>
-                </div>
-                <div class="product-image-wrapper">
-                    <img src="images/products/hand-wraps.png" alt="Hand Wraps" class="product-image">
-                    <div class="quick-add-wrapper">
-                        <button class="quick-add-btn">
-                            <i data-lucide="shopping-cart" style="width: 16px; height: 16px;"></i>
-                            Quick Add
-                        </button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Accessories</div>
-                    <h3 class="product-name">Pro Hand Wraps (3-Pack)</h3>
-                    <div class="product-rating">
-                        <span class="stars">★★★★★</span>
-                        <span class="rating-count">(267 reviews)</span>
-                    </div>
-                    <div class="product-price">
-                        <span class="current-price">$19</span>
                     </div>
                 </div>
             </div>
@@ -2214,228 +1242,136 @@
     </section>
 
     <!-- Brand Story Section -->
-    <section class="brand-story" id="story">
-        <div class="brand-story-hero">
-            <div class="brand-story-bg" id="brandParallax"></div>
-            <div class="brand-story-overlay"></div>
-            
-            <div class="brand-story-content">
-                <div class="heritage-badge scroll-reveal">
-                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
-                    Made in Sialkot, Pakistan
-                </div>
-                <h2 class="scroll-reveal">Crafted with <span class="highlight">Passion</span></h2>
-                <p class="brand-story-subtitle scroll-reveal">Heritage Meets Performance</p>
-                <p class="brand-story-description scroll-reveal">
-                    For over 6 years, we've been crafting premium fightwear in Sialkot, Pakistan's manufacturing hub. 
-                    Every stitch represents our commitment to quality, durability, and the fighting spirit.
+    <section class="brand-story" id="about">
+        <div class="brand-story-content">
+            <div class="brand-story-text">
+                <span class="section-tag">Our Heritage</span>
+                <h2>Made in <span>Sialkot</span>,<br>Crafted for Champions</h2>
+                <p>
+                    Founded in 2019, Xelent MMA started with a simple mission: create fightwear that can withstand 
+                    the intensity of professional training while remaining accessible to every athlete.
                 </p>
-            </div>
-        </div>
-        
-        <!-- Counter Stats -->
-        <div class="counter-stats">
-            <div class="counter-grid">
-                <div class="counter-item scroll-reveal">
-                    <div class="counter-icon">
-                        <i data-lucide="shirt" style="width: 28px; height: 28px;"></i>
+                <p>
+                    Based in Sialkot, Pakistan — a city renowned for its manufacturing excellence — we combine 
+                    traditional craftsmanship with modern performance technology. Every stitch is a testament to 
+                    our commitment to quality.
+                </p>
+                
+                <div class="brand-promise">
+                    <div class="promise-item">
+                        <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                        <span>IBJJF Approved</span>
                     </div>
-                    <div class="counter-value">
-                        <span class="counter" data-target="50">0</span>K<span class="suffix">+</span>
+                    <div class="promise-item">
+                        <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                        <span>Preshrunk Fabric</span>
                     </div>
-                    <div class="counter-label">Gis Produced</div>
-                </div>
-                <div class="counter-item scroll-reveal">
-                    <div class="counter-icon">
-                        <i data-lucide="globe" style="width: 28px; height: 28px;"></i>
+                    <div class="promise-item">
+                        <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                        <span>Reinforced Seams</span>
                     </div>
-                    <div class="counter-value">
-                        <span class="counter" data-target="40">0</span><span class="suffix">+</span>
-                    </div>
-                    <div class="counter-label">Countries Served</div>
-                </div>
-                <div class="counter-item scroll-reveal">
-                    <div class="counter-icon">
-                        <i data-lucide="calendar" style="width: 28px; height: 28px;"></i>
-                    </div>
-                    <div class="counter-value">
-                        <span class="counter" data-target="6">0</span><span class="suffix">+</span>
-                    </div>
-                    <div class="counter-label">Years of Excellence</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Quality Promise -->
-        <div class="quality-section">
-            <div class="quality-grid">
-                <div class="quality-content">
-                    <span class="section-tag">Quality Promise</span>
-                    <h3>Built to <span>Last</span></h3>
-                    <p>Every piece of Xelent gear undergoes rigorous testing by professional athletes. We use only the highest quality materials and reinforced stitching techniques.</p>
-                    
-                    <div class="quality-features">
-                        <div class="quality-feature scroll-reveal">
-                            <div class="icon-wrapper">
-                                <i data-lucide="shield-check" style="width: 20px; height: 20px;"></i>
-                            </div>
-                            <div>
-                                <h4>Reinforced Seams</h4>
-                                <p>Triple-stitched for durability</p>
-                            </div>
-                        </div>
-                        <div class="quality-feature scroll-reveal">
-                            <div class="icon-wrapper">
-                                <i data-lucide="droplets" style="width: 20px; height: 20px;"></i>
-                            </div>
-                            <div>
-                                <h4>Preshrunk Fabric</h4>
-                                <p>Maintains fit after washing</p>
-                            </div>
-                        </div>
-                        <div class="quality-feature scroll-reveal">
-                            <div class="icon-wrapper">
-                                <i data-lucide="scale" style="width: 20px; height: 20px;"></i>
-                            </div>
-                            <div>
-                                <h4>Competition Weight</h4>
-                                <p>IBJJF approved specifications</p>
-                            </div>
-                        </div>
-                        <div class="quality-feature scroll-reveal">
-                            <div class="icon-wrapper">
-                                <i data-lucide="zap" style="width: 20px; height: 20px;"></i>
-                            </div>
-                            <div>
-                                <h4>Quick Dry</h4>
-                                <p>Moisture-wicking technology</p>
-                            </div>
-                        </div>
+                    <div class="promise-item">
+                        <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                        <span>Competition Ready</span>
                     </div>
                 </div>
                 
-                <div class="ibjjf-badge scroll-reveal">
-                    <div class="badge-icon">🏆</div>
-                    <h4>IBJJF Certified</h4>
-                    <p>All our Gis meet International Brazilian Jiu-Jitsu Federation standards for competition use</p>
-                    <div class="certification-list">
-                        <span class="cert-tag">Competition Legal</span>
-                        <span class="cert-tag">Professional Grade</span>
-                        <span class="cert-tag">Global Standard</span>
-                    </div>
+                <a href="#" class="btn-primary">
+                    Learn More About Us
+                </a>
+            </div>
+            
+            <div class="counters">
+                <div class="counter-item reveal">
+                    <div class="counter-value" data-target="50000">50K+</div>
+                    <div class="counter-label">Gis Sold</div>
+                </div>
+                <div class="counter-item reveal reveal-delay-1">
+                    <div class="counter-value" data-target="40">40+</div>
+                    <div class="counter-label">Countries</div>
+                </div>
+                <div class="counter-item reveal reveal-delay-2">
+                    <div class="counter-value" data-target="6">6+</div>
+                    <div class="counter-label">Years</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="testimonials">
         <div class="section-header">
-            <span class="section-tag">Testimonials</span>
-            <h2 class="section-title">WHAT <span>ATHLETES</span> SAY</h2>
-            <p class="section-subtitle">Trusted by fighters worldwide</p>
+            <span class="section-tag">Reviews</span>
+            <h2 class="section-title">What <span>Athletes</span> Say</h2>
         </div>
         
         <div class="testimonials-grid">
-            <div class="testimonial-card scroll-reveal">
+            <div class="testimonial-card reveal">
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-text">
-                    "The quality of Xelent's BJJ Gi is outstanding. I've been training for 10 years and this is hands down the best gi I've owned at this price point."
+                    "The quality of Xelent's BJJ Gi is outstanding. I've been training for 10 years and this 
+                    is hands down the best gi I've owned at this price point. The fabric is durable yet comfortable."
                 </p>
                 <div class="testimonial-author">
                     <div class="author-avatar">AM</div>
                     <div class="author-info">
                         <h4>Ahmed Malik</h4>
-                        <p>BJJ Purple Belt • Dubai</p>
+                        <p>BJJ Purple Belt, Dubai</p>
                     </div>
                 </div>
             </div>
             
-            <div class="testimonial-card scroll-reveal">
+            <div class="testimonial-card reveal reveal-delay-1">
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-text">
-                    "As an MMA coach, I recommend Xelent gear to all my students. The rashguards hold up amazingly well after months of daily use."
+                    "As an MMA coach, I recommend Xelent gear to all my students. The rashguards hold up 
+                    amazingly well after months of daily use. Fast shipping to the UK too!"
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-avatar" style="background: linear-gradient(135deg, #3B82F6, #1D4ED8);">SK</div>
+                    <div class="author-avatar">SK</div>
                     <div class="author-info">
                         <h4>Sarah Khan</h4>
-                        <p>MMA Coach • London</p>
+                        <p>MMA Coach, London</p>
                     </div>
                 </div>
             </div>
             
-            <div class="testimonial-card scroll-reveal">
+            <div class="testimonial-card reveal reveal-delay-2">
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-text">
-                    "Competed at ADCC wearing Xelent shorts. Zero issues, perfect fit, and they look great in photos. Proud to support a Pakistani brand!"
+                    "Competed at ADCC wearing Xelent shorts. Zero issues, perfect fit, and they look great 
+                    in photos. Proud to support a Pakistani brand making waves globally!"
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-avatar" style="background: linear-gradient(135deg, #F59E0B, #D97706);">RJ</div>
+                    <div class="author-avatar">RJ</div>
                     <div class="author-info">
                         <h4>Raza Jafri</h4>
-                        <p>Pro Grappler • California</p>
+                        <p>Pro Grappler, California</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partner Logos Marquee -->
-    <section class="partners-section">
-        <p class="partners-label">Trusted by Top Academies & Gyms Worldwide</p>
-        <div class="partners-marquee">
-            <div class="partners-track">
-                <div class="partner-logo">GRACIE BARRA</div>
-                <div class="partner-logo">ATOS</div>
-                <div class="partner-logo">CHECKMAT</div>
-                <div class="partner-logo">RENZO GRACIE</div>
-                <div class="partner-logo">ALLIANCE</div>
-                <div class="partner-logo">FIGHT SPORTS</div>
-                <div class="partner-logo">LLOYD IRVIN</div>
-                <div class="partner-logo">TRISTAR GYM</div>
-                <div class="partner-logo">JACKSON WINK</div>
-                <div class="partner-logo">AKA</div>
-                <!-- Duplicate for seamless loop -->
-                <div class="partner-logo">GRACIE BARRA</div>
-                <div class="partner-logo">ATOS</div>
-                <div class="partner-logo">CHECKMAT</div>
-                <div class="partner-logo">RENZO GRACIE</div>
-                <div class="partner-logo">ALLIANCE</div>
-                <div class="partner-logo">FIGHT SPORTS</div>
-                <div class="partner-logo">LLOYD IRVIN</div>
-                <div class="partner-logo">TRISTAR GYM</div>
-                <div class="partner-logo">JACKSON WINK</div>
-                <div class="partner-logo">AKA</div>
             </div>
         </div>
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="newsletter-content">
-            <div class="newsletter-icon">
-                <i data-lucide="mail" style="width: 32px; height: 32px;"></i>
-            </div>
-            <h3>Join 15,000+ Fighters - Get 10% Off</h3>
-            <p>Subscribe for exclusive offers, new product drops, and pro training advice delivered to your inbox.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-            <p class="newsletter-disclaimer">No spam, unsubscribe anytime. Join 15,000+ fighters.</p>
-        </div>
+    <section class="newsletter">
+        <h3>Join the <span style="color: var(--red);">Xelent</span> Family</h3>
+        <p>Get 10% off your first order + exclusive training tips from pros</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="#" class="logo">
                     <div class="logo-icon">🥋</div>
                     <div class="logo-text">XELENT<span>MMA</span></div>
                 </a>
-                <p>Premium BJJ gear & fightwear crafted in Sialkot, Pakistan since 2019. Built for warriors, worn by champions.</p>
+                <p>Premium BJJ gear and fightwear crafted in Sialkot, Pakistan since 2019. Built for warriors, worn by champions.</p>
                 <div class="social-links">
                     <a href="#"><i data-lucide="instagram" style="width: 18px; height: 18px;"></i></a>
                     <a href="#"><i data-lucide="facebook" style="width: 18px; height: 18px;"></i></a>
@@ -2480,12 +1416,6 @@
         
         <div class="footer-bottom">
             <p>© 2025 Xelent MMA. All rights reserved. Made with ❤️ in Sialkot, Pakistan</p>
-            <div class="payment-methods">
-                <div class="payment-icon">💳</div>
-                <div class="payment-icon">Pay</div>
-                <div class="payment-icon">Visa</div>
-                <div class="payment-icon">MC</div>
-            </div>
         </div>
     </footer>
 
@@ -2493,197 +1423,61 @@
         // Initialize Lucide Icons
         lucide.createIcons();
         
-        // Navbar scroll effect
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
             if (window.scrollY > 100) {
                 nav.style.background = 'rgba(10, 10, 10, 0.98)';
             } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.8)';
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
             }
-        });
-        
-        // Parallax Effect for Hero
-        const heroParallax = document.getElementById('heroParallax');
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    if (heroParallax) {
-                        heroParallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-        
-        // Video Modal
-        const watchStoryBtn = document.getElementById('watchStoryBtn');
-        const videoModal = document.getElementById('videoModal');
-        const closeVideoModal = document.getElementById('closeVideoModal');
-        
-        watchStoryBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            videoModal.classList.add('active');
-        });
-        
-        closeVideoModal.addEventListener('click', () => {
-            videoModal.classList.remove('active');
-        });
-        
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                videoModal.classList.remove('active');
-            }
-        });
-        
-        // Scroll Indicator Click
-        document.getElementById('scrollIndicator').addEventListener('click', () => {
-            document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
         });
         
         // Counter Animation
-        function animateCounter(element, target, duration = 2000, decimals = 0) {
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
-            
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    element.textContent = decimals > 0 ? current.toFixed(decimals) : Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = decimals > 0 ? target.toFixed(decimals) : target;
-                }
-            };
-            
-            updateCounter();
-        }
+        const counters = document.querySelectorAll('.counter-value[data-target]');
         
-        // Intersection Observer for Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
+        const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const el = entry.target;
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
                     
-                    // Handle product cards
-                    if (el.classList.contains('product-card')) {
-                        el.classList.add('visible');
-                    }
-                    // Handle scroll-reveal elements
-                    else if (el.classList.contains('scroll-reveal')) {
-                        el.classList.add('visible');
-                    }
-                    // Handle counter items
-                    else if (el.classList.contains('counter-item')) {
-                        el.classList.add('visible');
-                        const counter = el.querySelector('.counter');
-                        if (counter && !counter.classList.contains('counted')) {
-                            counter.classList.add('counted');
-                            const target = parseFloat(counter.dataset.target);
-                            const decimals = parseInt(counter.dataset.decimals) || 0;
-                            animateCounter(counter, target, 2000, decimals);
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current).toLocaleString() + '+';
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target.toLocaleString() + '+';
                         }
-                    }
-                    // Handle quality features
-                    else if (el.classList.contains('quality-feature')) {
-                        el.classList.add('visible');
-                    }
-                    // Handle testimonial cards
-                    else if (el.classList.contains('testimonial-card')) {
-                        el.classList.add('visible');
-                    }
-                    // Handle IBJJF badge
-                    else if (el.classList.contains('ibjjf-badge')) {
-                        el.classList.add('visible');
-                    }
-                    // Handle brand story elements
-                    else if (el.classList.contains('heritage-badge') || 
-                             el.tagName === 'H2' || 
-                             el.classList.contains('brand-story-subtitle') ||
-                             el.classList.contains('brand-story-description')) {
-                        el.classList.add('visible');
-                    }
-                }
-            });
-        }, observerOptions);
-        
-        // Observe elements
-        document.querySelectorAll('.product-card, .scroll-reveal, .counter-item, .quality-feature, .testimonial-card, .ibjjf-badge, .heritage-badge, .brand-story-content h2, .brand-story-subtitle, .brand-story-description').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Hero counters animation
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.counter');
-                    counters.forEach(counter => {
-                        if (!counter.classList.contains('counted')) {
-                            counter.classList.add('counted');
-                            const target = parseFloat(counter.dataset.target);
-                            const decimals = parseInt(counter.dataset.decimals) || 0;
-                            animateCounter(counter, target, 2000, decimals);
-                        }
-                    });
-                    heroObserver.unobserve(entry.target);
+                    };
+                    
+                    updateCounter();
+                    counterObserver.unobserve(counter);
                 }
             });
         }, { threshold: 0.5 });
         
-        const heroStats = document.querySelector('.hero-stats');
-        if (heroStats) {
-            heroObserver.observe(heroStats);
-        }
-        
-        // 3D Tilt Effect for Product Cards
-        document.querySelectorAll('[data-tilt]').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-        
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-        
-        // Newsletter form submission
-        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = e.target.querySelector('input[type="email"]').value;
-            alert('Thank you for subscribing! Check your email for your 10% discount code.');
-            e.target.reset();
-        });
+        counters.forEach(counter => counterObserver.observe(counter));
     </script>
 </body>
 </html>
