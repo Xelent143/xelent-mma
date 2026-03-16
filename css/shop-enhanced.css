@@ -393,6 +393,19 @@
     position: relative;
     transform-style: preserve-3d;
     perspective: 1000px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15);
+}
+
+.product-card * {
+    text-decoration: none;
 }
 
 .product-card:hover {
