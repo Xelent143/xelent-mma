@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/shop-enhanced.css">
     <style>
         :root {
             --primary: #000000;
@@ -603,98 +604,279 @@
     <!-- Shop Container -->
     <div class="shop-container">
         <!-- Sidebar Filters -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
+            <!-- Mobile Filter Header -->
+            <div class="mobile-filter-header">
+                <h3>Filters</h3>
+                <button class="close-filters" id="closeFilters"><i data-lucide="x" style="width: 24px; height: 24px;"></i></button>
+            </div>
+
+            <!-- Active Filters Summary -->
+            <div class="filter-section active-filters-section" id="activeFiltersSection" style="display: none;">
+                <h3 class="filter-title">Active Filters <button class="clear-all" id="clearAllFilters">Clear All</button></h3>
+                <div class="active-filters-list" id="activeFiltersList"></div>
+            </div>
+            
             <div class="filter-section">
-                <h3 class="filter-title">Categories</h3>
-                <div class="filter-options">
+                <h3 class="filter-title" data-accordion="category">
+                    <span>Categories</span>
+                    <i data-lucide="chevron-up" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options" id="filter-category">
                     <label class="filter-option">
-                        <input type="checkbox" checked>
+                        <input type="checkbox" value="bjj-gi" data-filter="category">
                         <span>BJJ Gi (12)</span>
                     </label>
                     <label class="filter-option">
-                        <input type="checkbox">
+                        <input type="checkbox" value="rashguards" data-filter="category">
                         <span>Rashguards (8)</span>
                     </label>
                     <label class="filter-option">
-                        <input type="checkbox">
+                        <input type="checkbox" value="fight-shorts" data-filter="category">
                         <span>Fight Shorts (6)</span>
                     </label>
                     <label class="filter-option">
-                        <input type="checkbox">
+                        <input type="checkbox" value="accessories" data-filter="category">
                         <span>Accessories (10)</span>
                     </label>
                 </div>
             </div>
-            
-            <div class="filter-section">
-                <h3 class="filter-title">Price Range</h3>
-                <div class="price-range">
-                    <input type="number" placeholder="Min" value="0">
-                    <span>-</span>
-                    <input type="number" placeholder="Max" value="200">
+
+            <!-- SIZE FILTER - EXPANDED BY DEFAULT (Critical for BJJ) -->
+            <div class="filter-section filter-size">
+                <h3 class="filter-title" data-accordion="size">
+                    <span>Size <small class="filter-hint">Most Important</small></span>
+                    <i data-lucide="chevron-up" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options size-options" id="filter-size">
+                    <label class="filter-option size-option">
+                        <input type="checkbox" value="A0" data-filter="size">
+                        <span class="size-label">A0</span>
+                        <span class="size-guide">5'0" - 5'4"</span>
+                    </label>
+                    <label class="filter-option size-option">
+                        <input type="checkbox" value="A1" data-filter="size">
+                        <span class="size-label">A1</span>
+                        <span class="size-guide">5'4" - 5'8"</span>
+                    </label>
+                    <label class="filter-option size-option">
+                        <input type="checkbox" value="A2" data-filter="size">
+                        <span class="size-label">A2 <span class="popular-badge">Popular</span></span>
+                        <span class="size-guide">5'8" - 6'0"</span>
+                    </label>
+                    <label class="filter-option size-option">
+                        <input type="checkbox" value="A3" data-filter="size">
+                        <span class="size-label">A3</span>
+                        <span class="size-guide">6'0" - 6'3"</span>
+                    </label>
+                    <label class="filter-option size-option">
+                        <input type="checkbox" value="A4" data-filter="size">
+                        <span class="size-label">A4</span>
+                        <span class="size-guide">6'3" - 6'6"</span>
+                    </label>
+                    <label class="filter-option size-option">
+                        <input type="checkbox" value="A5" data-filter="size">
+                        <span class="size-label">A5</span>
+                        <span class="size-guide">6'6"+</span>
+                    </label>
+                    <a href="#" class="size-guide-link"><i data-lucide="ruler" style="width: 14px; height: 14px;"></i> Full Size Guide</a>
                 </div>
             </div>
             
             <div class="filter-section">
-                <h3 class="filter-title">Size</h3>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>A0 / XS</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>A1 / S</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="checkbox" checked>
-                        <span>A2 / M</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>A3 / L</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>A4 / XL</span>
-                    </label>
+                <h3 class="filter-title" data-accordion="price">
+                    <span>Price Range</span>
+                    <i data-lucide="chevron-up" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options" id="filter-price">
+                    <div class="price-slider-container">
+                        <div class="price-range-display">
+                            <span class="price-min">$0</span>
+                            <span class="price-max">$300</span>
+                        </div>
+                        <div class="dual-slider">
+                            <input type="range" min="0" max="300" value="0" class="slider-min" id="priceMin">
+                            <input type="range" min="0" max="300" value="300" class="slider-max" id="priceMax">
+                            <div class="slider-track"></div>
+                        </div>
+                    </div>
+                    <div class="price-presets">
+                        <button class="price-preset" data-min="0" data-max="100">Under $100</button>
+                        <button class="price-preset" data-min="100" data-max="150">$100 - $150</button>
+                        <button class="price-preset" data-min="150" data-max="200">$150 - $200</button>
+                        <button class="price-preset" data-min="200" data-max="300">Over $200</button>
+                    </div>
                 </div>
             </div>
             
             <div class="filter-section">
-                <h3 class="filter-title">Color</h3>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>Black</span>
+                <h3 class="filter-title" data-accordion="color">
+                    <span>Color</span>
+                    <i data-lucide="chevron-up" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options color-options" id="filter-color">
+                    <label class="color-option">
+                        <input type="checkbox" value="black" data-filter="color">
+                        <span class="color-swatch" style="background: #1a1a1a; border-color: #333;"></span>
+                        <span class="color-name">Black <span class="color-count">(12)</span></span>
                     </label>
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>White</span>
+                    <label class="color-option">
+                        <input type="checkbox" value="white" data-filter="color">
+                        <span class="color-swatch" style="background: #ffffff; border-color: #ddd;"></span>
+                        <span class="color-name">White <span class="color-count">(8)</span></span>
                     </label>
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>Blue</span>
+                    <label class="color-option">
+                        <input type="checkbox" value="blue" data-filter="color">
+                        <span class="color-swatch" style="background: #2563eb; border-color: #3b82f6;"></span>
+                        <span class="color-name">Blue <span class="color-count">(6)</span></span>
                     </label>
-                    <label class="filter-option">
-                        <input type="checkbox">
-                        <span>Navy</span>
+                    <label class="color-option">
+                        <input type="checkbox" value="navy" data-filter="color">
+                        <span class="color-swatch" style="background: #1e3a5f; border-color: #2d4a6f;"></span>
+                        <span class="color-name">Navy <span class="color-count">(4)</span></span>
+                    </label>
+                    <label class="color-option">
+                        <input type="checkbox" value="red" data-filter="color">
+                        <span class="color-swatch" style="background: #dc2626; border-color: #ef4444;"></span>
+                        <span class="color-name">Red <span class="color-count">(3)</span></span>
+                    </label>
+                    <label class="color-option">
+                        <input type="checkbox" value="gold" data-filter="color">
+                        <span class="color-swatch" style="background: #f59e0b; border-color: #fbbf24;"></span>
+                        <span class="color-name">Gold <span class="color-count">(2)</span></span>
                     </label>
                 </div>
+            </div>
+
+            <!-- BJJ-Specific Filters -->
+            <div class="filter-section bjj-filter">
+                <h3 class="filter-title" data-accordion="gi-weight">
+                    <span>Gi Weight</span>
+                    <i data-lucide="chevron-down" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options collapsed" id="filter-gi-weight">
+                    <label class="filter-option">
+                        <input type="checkbox" value="lightweight" data-filter="gi-weight">
+                        <span>Lightweight (350-450gsm)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="medium" data-filter="gi-weight">
+                        <span>Medium (450-550gsm)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="heavyweight" data-filter="gi-weight">
+                        <span>Heavyweight (550gsm+)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section bjj-filter">
+                <h3 class="filter-title" data-accordion="weave">
+                    <span>Weave Type</span>
+                    <i data-lucide="chevron-down" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options collapsed" id="filter-weave">
+                    <label class="filter-option">
+                        <input type="checkbox" value="pearl" data-filter="weave">
+                        <span>Pearl Weave</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="gold-weave" data-filter="weave">
+                        <span>Gold Weave</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="double" data-filter="weave">
+                        <span>Double Weave</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="single" data-filter="weave">
+                        <span>Single Weave</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section bjj-filter">
+                <h3 class="filter-title" data-accordion="ibjjf">
+                    <span>IBJJF Approved</span>
+                    <i data-lucide="chevron-down" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options collapsed" id="filter-ibjjf">
+                    <label class="filter-option">
+                        <input type="checkbox" value="approved" data-filter="ibjjf">
+                        <span><i data-lucide="badge-check" style="width: 16px; height: 16px; color: var(--gold); display: inline;"></i> Competition Legal</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title" data-accordion="rating">
+                    <span>Rating</span>
+                    <i data-lucide="chevron-down" style="width: 16px; height: 16px;" class="accordion-icon"></i>
+                </h3>
+                <div class="filter-options collapsed" id="filter-rating">
+                    <label class="filter-option rating-option">
+                        <input type="checkbox" value="5" data-filter="rating">
+                        <span class="stars">★★★★★</span>
+                        <span>5 Stars</span>
+                    </label>
+                    <label class="filter-option rating-option">
+                        <input type="checkbox" value="4" data-filter="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span>4+ Stars</span>
+                    </label>
+                    <label class="filter-option rating-option">
+                        <input type="checkbox" value="3" data-filter="rating">
+                        <span class="stars">★★★☆☆</span>
+                        <span>3+ Stars</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Mobile Apply Button -->
+            <div class="mobile-filter-footer">
+                <button class="btn-show-results" id="showResults">Show <span id="resultCount">36</span> Results</button>
             </div>
         </aside>
 
         <!-- Products Section -->
         <div class="products-section">
+            <!-- Toolbar -->
             <div class="toolbar">
-                <span class="results-count">Showing 1-12 of 36 products</span>
-                <select class="sort-select">
-                    <option>Sort by: Featured</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Best Rated</option>
-                    <option>Newest</option>
-                </select>
+                <div class="toolbar-left">
+                    <button class="mobile-filter-btn" id="mobileFilterBtn">
+                        <i data-lucide="filter" style="width: 18px; height: 18px;"></i>
+                        Filter
+                    </button>
+                    <span class="results-count">Showing <strong>1-12</strong> of <strong>36</strong> products</span>
+                </div>
+                <div class="toolbar-right">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" title="Grid View">
+                            <i data-lucide="layout-grid" style="width: 18px; height: 18px;"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" title="List View">
+                            <i data-lucide="list" style="width: 18px; height: 18px;"></i>
+                        </button>
+                    </div>
+                    <div class="sort-wrapper">
+                        <i data-lucide="arrow-up-down" style="width: 16px; height: 16px; color: var(--text-secondary);"></i>
+                        <select class="sort-select" id="sortSelect">
+                            <option value="featured">Featured</option>
+                            <option value="bestselling">Best Selling</option>
+                            <option value="newest">Newest</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="name">Name: A-Z</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Filters Display -->
+            <div class="active-filters-bar" id="activeFiltersBar" style="display: none;">
+                <div class="active-filters-pills" id="activeFiltersPills"></div>
+                <button class="clear-all-filters" id="clearAllFiltersBar">Clear All</button>
             </div>
 
             <div class="products-grid">
@@ -902,12 +1084,8 @@
                 </div>
             </div>
 
-            <div class="pagination">
-                <a href="#" class="page-btn"><i data-lucide="chevron-left" style="width: 18px; height: 18px;"></i></a>
-                <a href="#" class="page-btn active">1</a>
-                <a href="#" class="page-btn">2</a>
-                <a href="#" class="page-btn">3</a>
-                <a href="#" class="page-btn"><i data-lucide="chevron-right" style="width: 18px; height: 18px;"></i></a>
+            <div class="load-more-container">
+                <button class="btn-load-more" id="loadMoreBtn">Load More Products (24 remaining)</button>
             </div>
         </div>
     </div>
@@ -964,7 +1142,226 @@
     </footer>
 
     <script>
+        // Initialize Lucide icons
         lucide.createIcons();
+
+        // Mobile Filter Modal
+        const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+        const sidebar = document.getElementById('sidebar');
+        const closeFilters = document.getElementById('closeFilters');
+        const showResults = document.getElementById('showResults');
+
+        if (mobileFilterBtn) {
+            mobileFilterBtn.addEventListener('click', () => {
+                sidebar.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (closeFilters) {
+            closeFilters.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+
+        if (showResults) {
+            showResults.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Filter Accordion
+        document.querySelectorAll('.filter-title[data-accordion]').forEach(title => {
+            title.addEventListener('click', () => {
+                const targetId = 'filter-' + title.dataset.accordion;
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.classList.toggle('collapsed');
+                    title.classList.toggle('collapsed');
+                }
+            });
+        });
+
+        // Active Filters Management
+        const activeFilters = new Set();
+        const activeFiltersBar = document.getElementById('activeFiltersBar');
+        const activeFiltersPills = document.getElementById('activeFiltersPills');
+        const activeFiltersSection = document.getElementById('activeFiltersSection');
+        const activeFiltersList = document.getElementById('activeFiltersList');
+
+        function updateActiveFilters() {
+            const pills = [];
+            document.querySelectorAll('input[data-filter]:checked').forEach(checkbox => {
+                const filterType = checkbox.dataset.filter;
+                const value = checkbox.value;
+                const label = checkbox.closest('label').textContent.trim().split('\n')[0];
+                pills.push({ type: filterType, value: value, label: label });
+            });
+
+            // Update pills display
+            if (activeFiltersPills) {
+                activeFiltersPills.innerHTML = pills.map(pill => `
+                    <button class="filter-pill" data-type="${pill.type}" data-value="${pill.value}">
+                        ${pill.label}
+                        <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                    </button>
+                `).join('');
+                lucide.createIcons();
+            }
+
+            if (activeFiltersList) {
+                activeFiltersList.innerHTML = pills.map(pill => `
+                    <button class="filter-pill" data-type="${pill.type}" data-value="${pill.value}">
+                        ${pill.label}
+                        <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+                    </button>
+                `).join('');
+            }
+
+            // Show/hide active filters bar
+            if (activeFiltersBar) {
+                activeFiltersBar.style.display = pills.length > 0 ? 'flex' : 'none';
+            }
+            if (activeFiltersSection) {
+                activeFiltersSection.style.display = pills.length > 0 ? 'block' : 'none';
+            }
+
+            // Add click handlers to pills
+            document.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.addEventListener('click', () => {
+                    const type = pill.dataset.type;
+                    const value = pill.dataset.value;
+                    const checkbox = document.querySelector(`input[data-filter="${type}"][value="${value}"]`);
+                    if (checkbox) {
+                        checkbox.checked = false;
+                        updateActiveFilters();
+                    }
+                });
+            });
+        }
+
+        // Listen for filter changes
+        document.querySelectorAll('input[data-filter]').forEach(checkbox => {
+            checkbox.addEventListener('change', updateActiveFilters);
+        });
+
+        // Clear all filters
+        document.getElementById('clearAllFilters')?.addEventListener('click', () => {
+            document.querySelectorAll('input[data-filter]:checked').forEach(cb => cb.checked = false);
+            updateActiveFilters();
+        });
+
+        document.getElementById('clearAllFiltersBar')?.addEventListener('click', () => {
+            document.querySelectorAll('input[data-filter]:checked').forEach(cb => cb.checked = false);
+            updateActiveFilters();
+        });
+
+        // Price Slider
+        const priceMin = document.getElementById('priceMin');
+        const priceMax = document.getElementById('priceMax');
+        const pricePresets = document.querySelectorAll('.price-preset');
+
+        function updatePriceSlider() {
+            const min = parseInt(priceMin?.value || 0);
+            const max = parseInt(priceMax?.value || 300);
+            document.querySelector('.price-min').textContent = '$' + min;
+            document.querySelector('.price-max').textContent = '$' + max;
+
+            const track = document.querySelector('.slider-track');
+            if (track) {
+                const percentMin = (min / 300) * 100;
+                const percentMax = (max / 300) * 100;
+                track.style.background = `linear-gradient(to right, var(--border) ${percentMin}%, var(--accent) ${percentMin}%, var(--accent) ${percentMax}%, var(--border) ${percentMax}%)`;
+            }
+        }
+
+        if (priceMin) {
+            priceMin.addEventListener('input', updatePriceSlider);
+        }
+        if (priceMax) {
+            priceMax.addEventListener('input', updatePriceSlider);
+        }
+
+        pricePresets.forEach(preset => {
+            preset.addEventListener('click', () => {
+                pricePresets.forEach(p => p.classList.remove('active'));
+                preset.classList.add('active');
+                if (priceMin) priceMin.value = preset.dataset.min;
+                if (priceMax) priceMax.value = preset.dataset.max;
+                updatePriceSlider();
+            });
+        });
+
+        // View Toggle
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const view = btn.dataset.view;
+                const grid = document.querySelector('.products-grid');
+                if (view === 'list') {
+                    grid.style.gridTemplateColumns = '1fr';
+                } else {
+                    grid.style.gridTemplateColumns = '';
+                }
+            });
+        });
+
+        // Sort Select
+        const sortSelect = document.getElementById('sortSelect');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', () => {
+                // In a real implementation, this would sort the products
+                console.log('Sort by:', sortSelect.value);
+            });
+        }
+
+        // Quick Add Buttons
+        document.querySelectorAll('.quick-add').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                btn.textContent = 'Added!';
+                btn.style.background = 'var(--gold)';
+                setTimeout(() => {
+                    btn.textContent = 'Quick Add';
+                    btn.style.background = '';
+                }, 1500);
+            });
+        });
+
+        // Load More
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                loadMoreBtn.textContent = 'Loading...';
+                setTimeout(() => {
+                    loadMoreBtn.textContent = 'Load More Products (12 remaining)';
+                }, 1000);
+            });
+        }
+
+        // Product Card 3D Tilt Effect
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Initialize
+        updatePriceSlider();
     </script>
 </body>
 </html>
