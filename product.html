@@ -186,9 +186,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10rem;
             border: 1px solid var(--border);
             margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .thumbnail-list {
@@ -205,9 +211,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .thumbnail:hover,
@@ -734,12 +746,22 @@
     <div class="product-section">
         <!-- Image Gallery -->
         <div class="product-gallery">
-            <div class="main-image">🥋</div>
+            <div class="main-image">
+                <img src="https://placehold.co/600x600/111111/DC2626?text=ELITE+GI" alt="Elite Pro Gi - Main View">
+            </div>
             <div class="thumbnail-list">
-                <div class="thumbnail active">🥋</div>
-                <div class="thumbnail">📸</div>
-                <div class="thumbnail">📸</div>
-                <div class="thumbnail">📸</div>
+                <div class="thumbnail active">
+                    <img src="https://placehold.co/100x100/111111/DC2626?text=VIEW+1" alt="View 1">
+                </div>
+                <div class="thumbnail">
+                    <img src="https://placehold.co/100x100/111111/DC2626?text=VIEW+2" alt="View 2">
+                </div>
+                <div class="thumbnail">
+                    <img src="https://placehold.co/100x100/111111/DC2626?text=VIEW+3" alt="View 3">
+                </div>
+                <div class="thumbnail">
+                    <img src="https://placehold.co/100x100/111111/DC2626?text=VIEW+4" alt="View 4">
+                </div>
             </div>
         </div>
 
