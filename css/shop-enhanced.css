@@ -650,7 +650,7 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, rgba(220, 38, 38, 0.9), rgba(0, 0, 0, 0.9)), 
-                url('https://placehold.co/1400x400/111111/DC2626?text=BJJ+Training') center/cover;
+                url('https://images.unsplash.com/photo-1549719386-74dfc44173b5?w=1400&q=80') center/cover;
     background-attachment: fixed;
     transform: translateZ(0);
 }
