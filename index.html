@@ -967,6 +967,1126 @@
         
         .newsletter-form input::placeholder { color: var(--gray-500); }
         
+        /* Gi Finder Quiz Styles */
+        .gi-finder {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
+        }
+
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
+        .quiz-progress {
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--surface-light);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+            width: 33%;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .quiz-question {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            padding: 1.5rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.15);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--red);
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .option-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+        }
+
+        .option-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .option-desc {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .color-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 120px;
+            padding: 1rem;
+        }
+
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .quiz-result {
+            text-align: center;
+            display: none;
+        }
+
+        .quiz-result.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--gray-400);
+        }
+
+        .recommended-product {
+            background: var(--surface);
+            border: 2px solid var(--red);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            text-align: left;
+        }
+
+        .recommended-product img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .recommended-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recommended-info .price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+
+        .recommended-info .specs {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Enhanced Product Cards */
+        .product-specs {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-bottom: 0.5rem;
+        }
+
+        .color-swatches {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .color-swatches {
+            opacity: 1;
+        }
+
+        .swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .swatch:hover {
+            transform: scale(1.2);
+        }
+
+        .swatch.active {
+            border-color: var(--red);
+            box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--red);
+        }
+
+        .stock-status {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .in-stock {
+            color: #22c55e;
+        }
+
+        .low-stock {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .savings {
+            color: var(--red);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-batch {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+        }
+
+        .badge-urgency {
+            background: linear-gradient(135deg, var(--red), #ff4444);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .badge-low-stock {
+            background: var(--red);
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Athletes Section */
+        .athletes {
+            padding: 6rem 2rem;
+            background: var(--surface);
+        }
+
+        .athletes-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .athlete-card.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .athlete-image {
+            height: 100%;
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--surface-light), var(--surface));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .athlete-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .athlete-info {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .athlete-title {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .athlete-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .athlete-quote {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .athlete-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .athlete-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-400);
+        }
+
+        .athletes-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            grid-column: 1 / -1;
+        }
+
+        .athlete-item {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .athlete-item:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+        }
+
+        .athlete-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .athlete-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .athlete-item p {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        /* Factory Story Section */
+        .factory-story {
+            padding: 6rem 2rem;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .factory-story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/factory-bg.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+        }
+
+        .factory-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .factory-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .factory-text h2 span {
+            color: var(--red);
+        }
+
+        .factory-text p {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .factory-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .factory-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .factory-stat .number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+        }
+
+        .factory-stat .label {
+            color: var(--gray-400);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .video-placeholder {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--red);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--background);
+            z-index: 2000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--red);
+        }
+
+        .mobile-menu-actions {
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Size Guide Component */
+        .size-guide {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .size-guide-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .size-guide-title i {
+            color: var(--red);
+        }
+
+        .size-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .size-inputs select {
+            padding: 0.75rem 1rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .size-recommendation {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 8px;
+        }
+
+        .size-recommendation strong {
+            color: var(--red);
+            font-size: 1.25rem;
+        }
+
+        /* Athletes Section */
+        .athletes {
+            padding: 6rem 2rem;
+            background: var(--surface);
+        }
+
+        .athletes-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 3rem;
+        }
+
+        .athlete-card.featured {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .athlete-image {
+            position: relative;
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--surface-light), var(--surface));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .athlete-photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: var(--surface-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+        }
+
+        .athlete-badges {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .athlete-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-champion {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+        }
+
+        .badge-team {
+            background: var(--red);
+            color: white;
+        }
+
+        .athlete-info {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .athlete-title {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .athlete-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .athlete-quote {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .athlete-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .athlete-stats .achievement {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        .athletes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .athlete-item {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .athlete-item:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+        }
+
+        .athlete-item-image {
+            flex-shrink: 0;
+        }
+
+        .athlete-item-placeholder {
+            width: 64px;
+            height: 64px;
+            background: var(--surface-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+        }
+
+        .athlete-item-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .athlete-item-info p {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            margin-bottom: 0.5rem;
+        }
+
+        .athlete-item-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--red);
+        }
+
+        /* Factory Story Section */
+        .factory-story {
+            padding: 6rem 2rem;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .factory-story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .factory-story-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .factory-story-text {
+            max-width: 540px;
+        }
+
+        .factory-story-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .factory-story-text h2 span {
+            color: var(--red);
+        }
+
+        .factory-intro {
+            font-size: 1.15rem;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .factory-detail {
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .factory-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .factory-stat {
+            text-align: center;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .factory-stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .factory-stat-label {
+            color: var(--gray-400);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .watch-story-btn {
+            display: inline-flex;
+        }
+
+        .factory-video-wrapper {
+            position: relative;
+        }
+
+        .factory-video {
+            position: relative;
+        }
+
+        .video-placeholder {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-placeholder-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            gap: 1rem;
+        }
+
+        .play-button {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--red);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive for Athletes & Factory */
+        @media (max-width: 1024px) {
+            .athlete-card.featured {
+                grid-template-columns: 1fr;
+            }
+
+            .athlete-image {
+                min-height: 250px;
+            }
+
+            .factory-story-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .factory-story-text {
+                max-width: 100%;
+            }
+
+            .factory-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .athletes-grid {
+                gap: 2rem;
+            }
+
+            .athlete-info {
+                padding: 2rem;
+            }
+
+            .athlete-info h3 {
+                font-size: 1.75rem;
+            }
+
+            .athlete-stats {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .athletes-list {
+                grid-template-columns: 1fr;
+            }
+
+            .factory-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .play-button {
+                width: 64px;
+                height: 64px;
+            }
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--background);
+            z-index: 2000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--red);
+        }
+
+        .mobile-menu-actions {
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* Footer */
         .footer {
             background: var(--black);
@@ -1577,9 +2697,37 @@
                     <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
                     <span class="cart-count">3</span>
                 </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="images/xelent-logo.svg" alt="Xelent MMA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'logo-icon-fallback\'>X</span>';">
+                </div>
+                <div class="logo-text">XELENT<span>MMA</span></div>
+            </a>
+            <button class="close-menu" id="closeMenu">
+                <i data-lucide="x" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="index.html#about">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="mobile-menu-actions">
+            <a href="shop.html" class="btn-primary" style="width: 100%; justify-content: center;">Shop Now</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1740,88 +2888,129 @@
         </div>
         
         <div class="products-grid">
-            <!-- Product 1 -->
+            <!-- Product 1: Elite Pro Gi -->
             <div class="product-card reveal">
                 <div class="product-badges">
                     <span class="badge badge-new">New</span>
+                    <span class="badge badge-batch">Batch #12</span>
                 </div>
                 <div class="product-image">
                     <img src="images/bjj-gi-black.png" alt="Elite Pro Gi">
+                    <div class="color-swatches">
+                        <button class="swatch active" style="background: linear-gradient(135deg, #1a1a1a, #000000);"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #f5f5f5, #ffffff); border: 1px solid #333;"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #3b82f6, #1e40af);"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #1e3a5f, #0f172a);"></button>
+                    </div>
                     <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
+                    <div class="product-specs">450gsm Pearl Weave • IBJJF Legal</div>
                     <div class="product-category">BJJ Gi</div>
-                    <h3 class="product-name">Elite Pro Gi - Black</h3>
+                    <h3 class="product-name">Elite Pro Gi</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(128)</span>
+                        <span class="rating-count">(128 reviews)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$149</span>
                     </div>
+                    <div class="stock-status">
+                        <span class="in-stock">✓ In Stock</span>
+                    </div>
                 </div>
             </div>
             
-            <!-- Product 2 -->
+            <!-- Product 2: Competition Rashguard -->
             <div class="product-card reveal reveal-delay-1">
                 <div class="product-badges">
                     <span class="badge badge-sale">-20%</span>
                 </div>
                 <div class="product-image">
                     <img src="images/fighter-1.png" alt="Venom Rashguard">
+                    <div class="color-swatches">
+                        <button class="swatch active" style="background: linear-gradient(135deg, #1a1a1a, #000000);"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #DC2626, #991B1B);"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #1e3a5f, #0f172a);"></button>
+                    </div>
                     <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
+                    <div class="product-specs">Compression Fit • Moisture Wicking</div>
                     <div class="product-category">Rashguard</div>
-                    <h3 class="product-name">Venom Compression Long Sleeve</h3>
+                    <h3 class="product-name">Venom Compression LS</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(89)</span>
+                        <span class="rating-count">(89 reviews)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$39</span>
                         <span class="original-price">$49</span>
+                        <span class="savings">Save $10</span>
+                    </div>
+                    <div class="stock-status">
+                        <span class="low-stock">Only 5 left!</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Product 3 -->
+            <!-- Product 3: Flex Pro Shorts -->
             <div class="product-card reveal reveal-delay-2">
+                <div class="product-badges">
+                    <span class="badge badge-urgency">🔥 Selling Fast</span>
+                </div>
                 <div class="product-image">
                     <img src="images/fighter-2.png" alt="Fight Shorts">
+                    <div class="color-swatches">
+                        <button class="swatch active" style="background: linear-gradient(135deg, #1a1a1a, #000000);"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #DC2626, #991B1B);"></button>
+                    </div>
                     <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
+                    <div class="product-specs">4-Way Stretch • Side Slits</div>
                     <div class="product-category">Fight Shorts</div>
                     <h3 class="product-name">Flex Pro Grappling Shorts</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(156)</span>
+                        <span class="rating-count">(156 reviews)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$45</span>
                     </div>
+                    <div class="stock-status">
+                        <span class="in-stock">✓ In Stock</span>
+                    </div>
                 </div>
             </div>
             
-            <!-- Product 4 -->
+            <!-- Product 4: Competition Lite Gi -->
             <div class="product-card reveal reveal-delay-3">
                 <div class="product-badges">
                     <span class="badge badge-new">New</span>
                 </div>
                 <div class="product-image">
                     <img src="images/fighter-3.png" alt="Competition Gi">
+                    <div class="color-swatches">
+                        <button class="swatch active" style="background: linear-gradient(135deg, #f5f5f5, #ffffff); border: 1px solid #333;"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #1a1a1a, #000000);"></button>
+                        <button class="swatch" style="background: linear-gradient(135deg, #3b82f6, #1e40af);"></button>
+                    </div>
                     <button class="quick-add">Quick Add</button>
                 </div>
                 <div class="product-info">
+                    <div class="product-specs">350gsm Pearl Weave • Lightweight</div>
                     <div class="product-category">BJJ Gi</div>
-                    <h3 class="product-name">Competition Lite Gi - White</h3>
+                    <h3 class="product-name">Competition Lite Gi</h3>
                     <div class="product-rating">
                         <span class="stars">★★★★★</span>
-                        <span class="rating-count">(74)</span>
+                        <span class="rating-count">(74 reviews)</span>
                     </div>
                     <div class="product-price">
                         <span class="current-price">$129</span>
+                    </div>
+                    <div class="stock-status">
+                        <span class="in-stock">✓ In Stock</span>
                     </div>
                 </div>
             </div>
@@ -2340,6 +3529,292 @@
         }, { threshold: 0.5 });
         
         statNumbers.forEach(stat => statObserver.observe(stat));
+        
+        // Gi Finder Quiz Logic
+        const quizData = {
+            experience: null,
+            budget: null,
+            color: null
+        };
+        
+        const productRecommendations = {
+            beginner: {
+                budget: {
+                    name: 'Starter Gi',
+                    price: '$89',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'Perfect entry-level gi for beginners. Lightweight, durable, and affordable.',
+                    features: ['350gsm Pearl Weave', 'Preshrunk Fabric', 'White Belt Included'],
+                    badge: 'Best for Beginners'
+                },
+                mid: {
+                    name: 'Essential Gi',
+                    price: '$119',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'Great step-up with better fabric quality and reinforced stitching.',
+                    features: ['450gsm Pearl Weave', 'Reinforced Seams', 'Ripstop Pants'],
+                    badge: 'Most Popular'
+                },
+                premium: {
+                    name: 'Elite Pro Gi',
+                    price: '$149',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'Premium quality that will last years. Competition-ready from day one.',
+                    features: ['550gsm Pearl Weave', 'Gold Weave Collar', 'Competition Cut'],
+                    badge: 'Premium Choice'
+                }
+            },
+            intermediate: {
+                budget: {
+                    name: 'Essential Gi',
+                    price: '$119',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'Best value for regular training. Durable enough for 3+ sessions per week.',
+                    features: ['450gsm Pearl Weave', 'Reinforced Seams', 'Ripstop Pants'],
+                    badge: 'Best Value'
+                },
+                mid: {
+                    name: 'Essential Gi',
+                    price: '$119',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'The sweet spot for intermediate practitioners. Built to last.',
+                    features: ['450gsm Pearl Weave', 'Reinforced Seams', 'Ripstop Pants'],
+                    badge: 'Best Value'
+                },
+                premium: {
+                    name: 'Elite Pro Gi',
+                    price: '$149',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'Competition-grade gi for serious practitioners. IBJJF approved.',
+                    features: ['550gsm Pearl Weave', 'Gold Weave Collar', 'IBJJF Approved'],
+                    badge: 'Competition Ready'
+                }
+            },
+            competitor: {
+                budget: {
+                    name: 'Essential Gi',
+                    price: '$119',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'Solid training gi that meets competition standards without breaking the bank.',
+                    features: ['450gsm Pearl Weave', 'IBJJF Approved', 'Ripstop Pants'],
+                    badge: 'Competition Ready'
+                },
+                mid: {
+                    name: 'Elite Pro Gi',
+                    price: '$149',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'Competition-grade quality at a great price. Trusted by pros.',
+                    features: ['550gsm Pearl Weave', 'Gold Weave Collar', 'IBJJF Approved'],
+                    badge: 'Pro Choice'
+                },
+                premium: {
+                    name: 'Elite Pro Gi',
+                    price: '$149',
+                    image: 'images/bjj-gi-black.png',
+                    reason: 'The ultimate competition gi. Premium materials and precise fit.',
+                    features: ['550gsm Pearl Weave', 'Gold Weave Collar', 'IBJJF Approved'],
+                    badge: 'Top Tier'
+                }
+            }
+        };
+        
+        let currentStep = 1;
+        
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const currentStepEl = document.getElementById('currentStep');
+            
+            if (progressFill && currentStepEl) {
+                const progress = (currentStep / 3) * 100;
+                progressFill.style.width = progress + '%';
+                currentStepEl.textContent = currentStep;
+            }
+        }
+        
+        function showStep(step) {
+            document.querySelectorAll('.quiz-step').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            const targetStep = document.querySelector(`.quiz-step[data-step="${step}"]`);
+            if (targetStep) {
+                targetStep.classList.add('active');
+            }
+            
+            currentStep = step;
+            updateProgress();
+        }
+        
+        function showResult() {
+            const resultSection = document.getElementById('quizResult');
+            const productContainer = document.getElementById('recommendedProduct');
+            
+            if (!resultSection || !productContainer) return;
+            
+            const recommendation = productRecommendations[quizData.experience][quizData.budget];
+            
+            // Update color in image path if needed
+            let imagePath = recommendation.image;
+            if (quizData.color && quizData.color !== 'black') {
+                imagePath = imagePath.replace('black', quizData.color);
+            }
+            
+            productContainer.innerHTML = `
+                <div class="product-image">
+                    <img src="${imagePath}" alt="${recommendation.name}" onerror="this.src='images/bjj-gi-black.png'">
+                </div>
+                <div class="product-details">
+                    <span class="product-badge">⭐ ${recommendation.badge}</span>
+                    <h4>${recommendation.name} - ${quizData.color.charAt(0).toUpperCase() + quizData.color.slice(1)}</h4>
+                    <p class="reason">${recommendation.reason}</p>
+                    <div class="features">
+                        ${recommendation.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                    </div>
+                    <div class="price">${recommendation.price}</div>
+                    <a href="shop.html" class="btn-primary">
+                        <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
+                        Shop Now
+                    </a>
+                </div>
+            `;
+            
+            // Re-initialize icons for new content
+            lucide.createIcons();
+            
+            document.querySelectorAll('.quiz-step').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            resultSection.classList.add('active');
+            
+            // Hide progress bar in results
+            const progressBar = document.querySelector('.quiz-progress');
+            if (progressBar) {
+                progressBar.style.display = 'none';
+            }
+        }
+        
+        function handleOptionClick(e) {
+            const option = e.currentTarget;
+            const question = option.dataset.question;
+            const value = option.dataset.value;
+            
+            // Update data
+            quizData[question] = value;
+            
+            // Visual feedback
+            option.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            option.classList.add('selected');
+            
+            // Small delay for visual feedback before advancing
+            setTimeout(() => {
+                if (question === 'experience') {
+                    showStep(2);
+                } else if (question === 'budget') {
+                    showStep(3);
+                } else if (question === 'color') {
+                    showResult();
+                }
+            }, 300);
+        }
+        
+        function resetQuiz() {
+            quizData.experience = null;
+            quizData.budget = null;
+            quizData.color = null;
+            
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            const progressBar = document.querySelector('.quiz-progress');
+            if (progressBar) {
+                progressBar.style.display = 'flex';
+            }
+            
+            const resultSection = document.getElementById('quizResult');
+            if (resultSection) {
+                resultSection.classList.remove('active');
+            }
+            
+            showStep(1);
+        }
+        
+        // Initialize quiz
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenu = document.getElementById('closeMenu');
+            
+            if (mobileMenuBtn && mobileMenu && closeMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+                
+                // Close menu when clicking on links
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+            
+            // Color swatch selection
+            document.querySelectorAll('.color-swatches').forEach(container => {
+                container.querySelectorAll('.swatch').forEach(swatch => {
+                    swatch.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        container.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+            });
+            
+            // Quick add buttons
+            document.querySelectorAll('.quick-add').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const originalText = this.textContent;
+                    this.textContent = 'Added!';
+                    this.style.background = '#22c55e';
+                    
+                    // Update cart count
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        const currentCount = parseInt(cartCount.textContent);
+                        cartCount.textContent = currentCount + 1;
+                    }
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = '';
+                    }, 1500);
+                });
+            });
+            
+            // Option click handlers
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', handleOptionClick);
+            });
+            
+            // Retake quiz button
+            const retakeBtn = document.getElementById('retakeQuiz');
+            if (retakeBtn) {
+                retakeBtn.addEventListener('click', resetQuiz);
+            }
+            
+            updateProgress();
+        });
     </script>
 </body>
 </html>
